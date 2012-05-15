@@ -41,23 +41,10 @@ migration.gini.total <- function(m) {
 
     check.migration.matrix(m)
 
-    n <- nrow(m)
-    ## get values from matrix except for the diagonal
+    n           <- nrow(m)
     m.val       <- m[xor(upper.tri(m), lower.tri(m))]
-    m.val.l     <- length(m.val)
-    ## vectorized solution (cannot vectorize all because of memory limits)
+
     return(sum(apply(as.data.frame(m.val), 1, function(x) sum(abs(m.val-x))))/(2*n*(n-1)*sum(m)))
-
-    ## big memory method
-    return(sum(abs(rep(m.val, m.val.l) -unlist(lapply(m.val, rep, m.val.l))))/(2*n*(n-1)*sum(m)))
-
-    ## original (loop) method
-    for (i in l)
-        for (j in setdiff(l, i))
-            for (g in l)
-                for (h in setdiff(l, g))
-                    res <- res + abs(m[i, j] - m[g, h])
-    res/(2*n*(n-1)*sum(m))
 
 }
 
@@ -82,24 +69,7 @@ migration.gini.row <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    res <- sum(apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE)*2))
-    return(res/(2*n*(n-1)*sum(m, na.rm = TRUE)))
-
-    ## vectorized old solution
-    res <- sum(apply(m, 1, function(m.row) {
-        id <- !apply(m, 1, function(x) identical(x, m.row))
-        sum(apply(as.data.frame(m.row[id]), 1, function(m.cell) sum(abs(m.row - m.cell), na.rm = TRUE)))
-    }))
-
-    ## original (loop) method
-    n   <- nrow(m)
-    l   <- 1:n
-    res <- 0
-    for (i in l)
-        for (j in setdiff(l, i))
-                for (h in setdiff(l, c(i, j)))
-                    res <- res + abs(m[i, j] - m[i, h])
-    res/(2*n*(n-1)*sum(m))
+    sum(apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE)*2))/(2*n*(n-1)*sum(m, na.rm = TRUE))
 
 }
 
@@ -144,18 +114,7 @@ migration.gini.col <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    res <- sum(apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE)*2))
-    return(res/(2*n*(n-1)*sum(m, na.rm = TRUE)))
-
-    ## original (loop) method
-    n   <- ncol(m)
-    l   <- 1:n
-    res <- 0
-    for (j in l)
-        for (i in setdiff(l, j))
-                for (g in setdiff(l, c(i, j)))
-                    res <- res + abs(m[i, j] - m[g, j])
-    res/(2*n*(n-1)*sum(m))
+    sum(apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE)*2))/(2*n*(n-1)*sum(m, na.rm = TRUE))
 
 }
 
@@ -201,16 +160,7 @@ migration.gini.exchange <- function(m) {
     m.val       <- m[xor(upper.tri(m), lower.tri(m))]
     m.t.val     <- m.t[xor(upper.tri(m.t), lower.tri(m.t))]
 
-    return(sum(abs(m.val - m.t.val))/(2*n*(n-1)*sum(m)))
-
-    ## original (loop) method
-    n   <- nrow(m)
-    l   <- 1:n
-    res <- 0
-    for (i in l)
-        for (j in setdiff(l, i))
-            res <- res + abs(m[i, j] - m[j, i])
-    res/(2*n*(n-1)*sum(m))
+    sum(abs(m.val - m.t.val))/(2*n*(n-1)*sum(m))
 
 }
 
@@ -255,21 +205,7 @@ migration.gini.out <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    return(apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*rowSums(m, na.rm = TRUE)))
-
-    ## original (loop) solution
-    n   <- nrow(m)
-    l   <- 1:n
-    res <- NULL
-    for (k in l) {
-        res.t <- 0
-        for (j in setdiff(l, k))
-            for (h in setdiff(l, k))
-                res.t <- res.t + abs(m[k, j] - m[k, h])
-        res <- c(res, res.t/(2*(n-1)*rowSums(m)[k]))
-    }
-
-    return(res)
+    apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*rowSums(m, na.rm = TRUE))
 
 }
 
@@ -294,21 +230,7 @@ migration.gini.in <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    return(apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*colSums(m, na.rm = TRUE)))
-
-    ## original (loop) solution
-    n   <- nrow(m)
-    l   <- 1:n
-    res <- NULL
-    for (k in l) {
-        res.t <- 0
-        for (i in setdiff(l, k))
-            for (g in setdiff(l, k))
-                res.t <- res.t + abs(m[i, k] - m[g, k])
-        res <- c(res, res.t/(2*(n-1)*colSums(m)[k]))
-    }
-
-    return(res)
+    apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*colSums(m, na.rm = TRUE))
 
 }
 
