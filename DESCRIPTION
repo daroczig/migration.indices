@@ -1,0 +1,16 @@
+Package: migration.indices
+Maintainer: Gergely Daróczi <gergely@snowl.net>
+License: AGPL-3
+BugReports: https://github.com/daroczig/migration.indices/issues
+Title: Migration indices
+LazyData: no
+Type: Package
+Author: Gergely Daróczi <gergely@snowl.net>
+Description: This package provides different indices to show (un)quality of
+    migration.
+Version: 0.1
+URL: http://github.com/daroczig/migration.indices
+Date: 2012-05-16
+Encoding: UTF-8
+Collate:
+    'gini.R'
