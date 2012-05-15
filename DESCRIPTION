@@ -5,7 +5,8 @@ BugReports: https://github.com/daroczig/migration.indices/issues
 Title: Migration indices
 LazyData: no
 Type: Package
-Author: Gergely Daróczi <gergely@snowl.net>
+Author: Lajos Bálint <balint@demografia.hu> and Gergely Daróczi
+    <gergely@snowl.net>
 Description: This package provides different indices to show (un)quality of
     migration.
 Version: 0.1
