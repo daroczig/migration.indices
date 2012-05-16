@@ -1,8 +1,3 @@
-################################################################################
-## Based on:
-##  * David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
-################################################################################
-
 #' Check Migration Matrix
 #'
 #' Checks if provided R object looks like a migration matrix.
@@ -37,7 +32,10 @@ check.migration.matrix <- function(m) {
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references \itemize{
+#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.total(migration.hyp)        # 0.2222222
@@ -55,7 +53,7 @@ migration.gini.total <- function(m) {
 
     ## faster method (fails with "low memory")
     diag(m)     <- NA
-    sum(dist(as.vector(m)), na.rm = TRUE)*2/(2*n*(n-1)*sum(m, na.rm = TRUE))
+    sum(dist(as.vector(m)), na.rm = TRUE)*2/((2*n*(n-1)-1)*sum(m, na.rm = TRUE))
 
 }
 
@@ -195,7 +193,10 @@ migration.gini.exchange.standardized <- function(m, migration.gini.total = migra
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references \itemize{
+#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.out(migration.hyp)  # 0 0 0
@@ -209,7 +210,7 @@ migration.gini.out <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*rowSums(m, na.rm = TRUE))
+    apply(m, 1, function(m.row) sum(dist(m.row), na.rm = TRUE) * 2) / (2 * (n - 2) * rowSums(m, na.rm = TRUE))
 
 }
 
@@ -218,7 +219,10 @@ migration.gini.out <- function(m) {
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references \itemize{
+#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.in(migration.hyp)   # 0.1000000 0.2500000 0.1666667
@@ -233,7 +237,7 @@ migration.gini.in <- function(m) {
     diag(m)     <- NA
     n           <- nrow(m)
 
-    apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE)*2)/(2*(n-1)*colSums(m, na.rm = TRUE))
+    apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE) * 2) / (2 * (n - 2) * colSums(m, na.rm = TRUE))
 
 }
 
