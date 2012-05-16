@@ -1,3 +1,8 @@
+################################################################################
+## Based on:
+##  * David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+################################################################################
+
 #' Check Migration Matrix
 #'
 #' Checks if provided R object looks like a migration matrix.
@@ -18,6 +23,10 @@ check.migration.matrix <- function(m) {
         stop('Wrong data tpye (!symmetrical matrix) provided!')
     if (!is.numeric(m))
         stop('Wrong data tpye (!numeric) provided!')
+    if (length(which(is.na(m[xor(upper.tri(m), lower.tri(m))]))) > 0)
+        stop('Missing values (outside of diagonal) found in provided matrix!')
+    if (!any(all(is.na(diag(m))), all(diag(m) == 0)))
+        stop('Diagonal should be zero is missing.')
 
     return(invisible(TRUE))
 
@@ -30,10 +39,9 @@ check.migration.matrix <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0), 3, 3)
-#' migration.gini.total(m)        # 0.2222222
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.total(m2)       # 0.1875
+#' data(migration.hyp)
+#' migration.gini.total(migration.hyp)        # 0.2222222
+#' migration.gini.total(migration.hyp2)       # 0.1875
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -43,8 +51,11 @@ migration.gini.total <- function(m) {
 
     n           <- nrow(m)
     m.val       <- m[xor(upper.tri(m), lower.tri(m))]
+    return(sum(apply(as.data.frame(m.val), 1, function(x) sum(abs(m.val-x))), na.rm = TRUE)/(2*n*(n-1)*sum(m, na.rm = TRUE)))
 
-    return(sum(apply(as.data.frame(m.val), 1, function(x) sum(abs(m.val-x))))/(2*n*(n-1)*sum(m)))
+    ## faster method (fails with "low memory")
+    diag(m)     <- NA
+    sum(dist(as.vector(m)), na.rm = TRUE)*2/(2*n*(n-1)*sum(m, na.rm = TRUE))
 
 }
 
@@ -55,10 +66,9 @@ migration.gini.total <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0), 3, 3)
-#' migration.gini.row(m)  # 0
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.row(m2) # 0.02083333
+#' data(migration.hyp)
+#' migration.gini.row(migration.hyp)  # 0
+#' migration.gini.row(migration.hyp2) # 0.02083333
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -81,10 +91,9 @@ migration.gini.row <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.row.standardized(m)     # 0
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.row.standardized(m2)    # 11.11111
+#' data(migration.hyp)
+#' migration.gini.row.standardized(migration.hyp)     # 0
+#' migration.gini.row.standardized(migration.hyp2)    # 11.11111
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -100,10 +109,9 @@ migration.gini.row.standardized <- function(m, migration.gini.total = migration.
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.col(m)  # 0.05555556
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.col(m2) # 0.04166667
+#' data(migration.hyp)
+#' migration.gini.col(migration.hyp)  # 0.05555556
+#' migration.gini.col(migration.hyp2) # 0.04166667
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -126,10 +134,9 @@ migration.gini.col <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.col.standardized(m)     # 25
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.col.standardized(m2)    # 22.22222
+#' data(migration.hyp)
+#' migration.gini.col.standardized(migration.hyp)     # 25
+#' migration.gini.col.standardized(migration.hyp2)    # 22.22222
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -145,10 +152,9 @@ migration.gini.col.standardized <- function(m, migration.gini.total = migration.
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.exchange(m)     # 0.05555556
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.exchange(m2)    # 0.04166667
+#' data(migration.hyp)
+#' migration.gini.exchange(migration.hyp)     # 0.05555556
+#' migration.gini.exchange(migration.hyp2)    # 0.04166667
 #' }
 #' @author Gergely Daróczi
 migration.gini.exchange <- function(m) {
@@ -172,10 +178,9 @@ migration.gini.exchange <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.exchange.standardized(m) # 25
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.exchange.standardized(m2) # 22.22222
+#' data(migration.hyp)
+#' migration.gini.exchange.standardized(migration.hyp)  # 25
+#' migration.gini.exchange.standardized(migration.hyp2) # 22.22222
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -192,10 +197,9 @@ migration.gini.exchange.standardized <- function(m, migration.gini.total = migra
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.out(m)  # 0 0 0
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.out(m2) # 0.000 0.125 0.000
+#' data(migration.hyp)
+#' migration.gini.out(migration.hyp)  # 0 0 0
+#' migration.gini.out(migration.hyp2) # 0.000 0.125 0.000
 #' }
 #' @author Gergely Daróczi
 migration.gini.out <- function(m) {
@@ -216,10 +220,9 @@ migration.gini.out <- function(m) {
 #' @return number
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini.in(m)   # 0.1000000 0.2500000 0.1666667
-#' m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-#' migration.gini.in(m2)  # 0.1000000 0.0000000 0.2142857
+#' data(migration.hyp)
+#' migration.gini.in(migration.hyp)   # 0.1000000 0.2500000 0.1666667
+#' migration.gini.in(migration.hyp2)  # 0.1000000 0.0000000 0.2142857
 #' }
 #' @author Gergely Daróczi
 #' @export
@@ -240,8 +243,9 @@ migration.gini.in <- function(m) {
 #' @param m migration matrix
 #' @author Gergely Daróczi
 #' @examples \dontrun{
-#' m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-#' migration.gini(m)
+#' data(migration.hyp)
+#' migration.gini(migration.hyp)
+#' migration.gini(migration.hyp2)
 #' }
 #' @export
 migration.gini <- function(m) {

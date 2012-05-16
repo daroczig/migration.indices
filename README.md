@@ -16,7 +16,7 @@ The below migration matrix is a demo dataset based on
  * David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 
 ```
-m   <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
+data(migration.hyp)
 res <- migration.gini(m)
 res
 ```
@@ -42,4 +42,19 @@ Where *In* and *Out-migration Field Gini Index* are vectors:
 [1] 0.1000000 0.2500000 0.1666667
 > res$migration.gini.out
 [1] 0 0 0
+```
+
+## World dataset
+
+Using the [Global Bilateral Migration Database](http://data.worldbank.org/data-catalog/global-bilateral-migration-database) (2000) of World Bank:
+
+```
+data(migration.world)
+migration.gini(migration.world)
+```
+
+Results in:
+
+```
+
 ```

@@ -15,3 +15,4 @@ Date: 2012-05-16
 Encoding: UTF-8
 Collate:
     'gini.R'
+    'migration.indices.R'

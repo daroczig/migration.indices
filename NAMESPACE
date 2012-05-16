@@ -1,3 +1,4 @@
+export(migration.cmr)
 export(migration.gini)
 export(migration.gini.col)
 export(migration.gini.col.standardized)
