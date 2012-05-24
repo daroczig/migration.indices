@@ -15,10 +15,9 @@
 }
 \examples{
 \dontrun{
-m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-migration.gini.exchange(m)     # 0.05555556
-m2 <- matrix(c(0, 30, 20, 20, 0, 20, 20, 50, 0), 3, 3 )
-migration.gini.exchange(m2)    # 0.04166667
+data(migration.hyp)
+migration.gini.exchange(migration.hyp)     # 0.05555556
+migration.gini.exchange(migration.hyp2)    # 0.04166667
 }
 }
 \author{

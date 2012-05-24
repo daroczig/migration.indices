@@ -12,8 +12,9 @@
 }
 \examples{
 \dontrun{
-m <- matrix(c(0, 20, 30, 10, 0, 30, 10, 20, 0),3,3)
-migration.gini(m)
+data(migration.hyp)
+migration.gini(migration.hyp)
+migration.gini(migration.hyp2)
 }
 }
 \author{
