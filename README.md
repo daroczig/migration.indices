@@ -24,15 +24,15 @@ res
 Resulting in:
 
 ```
-Total Flows Gini Index:			 0.2222222
-Rows Gini Index:			 0
-Standardized Rows Gini Index:		 0
-Columns Gini Index:			 0.05555556
-Standardized Columns Gini Index:	 25
-Exchange Gini Index:			 0.05555556
-Standardized Exchange Gini Index:	 25
-In-migration Field Gini Index:		 vector
-Out-migration Field Gini Index:		 vector
+Total Flows Gini Index:	                 0.2222222
+Rows Gini Index:                         0
+Standardized Rows Gini Index:            0
+Columns Gini Index:                      0.05555556
+Standardized Columns Gini Index:         25
+Exchange Gini Index:                     0.05555556
+Standardized Exchange Gini Index:        25
+In-migration Field Gini Index:           vector
+Out-migration Field Gini Index:          vector
 ```
 
 Where *In* and *Out-migration Field Gini Index* are vectors:
