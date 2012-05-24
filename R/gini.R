@@ -242,6 +242,29 @@ migration.gini.in <- function(m) {
 }
 
 
+#' Migration-weighted In-migration Gini Index
+#'
+#' @param m migration matrix
+#' @return number
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.weighted.gini.in(migration.hyp)   #
+#' migration.weighted.gini.in(migration.hyp2)  #
+#' }
+#' @author Gergely Daróczi
+#' @export
+migration.weighted.gini.in <- function(m) {
+
+    diag(m)     <- NA
+    n           <- nrow(m)
+    m.sum       <- sum(m, na.rm = TRUE)
+
+    sum(migration.gini.in(m) * rowSums(m, na.rm = TRUE) / m.sum) / n
+
+}
+
+
 #' Spatial Gini Indexes
 #'
 #' @param m migration matrix
@@ -276,15 +299,15 @@ migration.gini <- function(m) {
 print.migration.gini <- function(x) {
 
     cat('\n')
-    cat('Total Flows Gini Index:\t\t\t', x$migration.gini.total, '\n')
-    cat('Rows Gini Index:\t\t\t', x$migration.gini.row, '\n')
-    cat('Standardized Rows Gini Index:\t\t', x$migration.gini.row.standardized, '\n')
-    cat('Columns Gini Index:\t\t\t', x$migration.gini.col, '\n')
-    cat('Standardized Columns Gini Index:\t', x$migration.gini.col.standardized, '\n')
-    cat('Exchange Gini Index:\t\t\t', x$migration.gini.exchange, '\n')
-    cat('Standardized Exchange Gini Index:\t', x$migration.gini.exchange.standardized, '\n')
-    cat('In-migration Field Gini Index:\t\t', 'vector', '\n')
-    cat('Out-migration Field Gini Index:\t\t', 'vector', '\n')
+    cat('Total Flows Gini Index:           ', x$migration.gini.total, '\n')
+    cat('Rows Gini Index:                  ', x$migration.gini.row, '\n')
+    cat('Standardized Rows Gini Index:     ', x$migration.gini.row.standardized, '\n')
+    cat('Columns Gini Index:               ', x$migration.gini.col, '\n')
+    cat('Standardized Columns Gini Index:  ', x$migration.gini.col.standardized, '\n')
+    cat('Exchange Gini Index:              ', x$migration.gini.exchange, '\n')
+    cat('Standardized Exchange Gini Index: ', x$migration.gini.exchange.standardized, '\n')
+    cat('In-migration Field Gini Index:    ', 'vector', '\n')
+    cat('Out-migration Field Gini Index:   ', 'vector', '\n')
     cat('\n')
 
 }

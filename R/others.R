@@ -49,3 +49,26 @@ migration.connectivity <- function(m) {
 }
 
 
+#' Migration Inequality Index
+#'
+#' Meauseres the proportion of the total number of potential interregional flows which are not zero.
+#' @param m migration matrix
+#' @return number between 0 and 1 where 1 shows greater inequality
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.inequality(migration.hyp)
+#' data(migration.world)
+#' migration.inequality(migration.world)
+#' )}
+#' @author Gergely Daróczi
+#' @export
+## migration.inequality <- function(m) {
+
+##     check.migration.matrix(m)
+
+##     diag(m)     <- NA
+##     m.expected  <- ???  ## TODO: what is that expected matrix? p. 454
+##     sum(m - m.expected na.rm = TRUE) * 0.5
+
+## }
