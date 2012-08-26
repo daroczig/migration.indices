@@ -1,27 +1,29 @@
-\name{migration.connectivity}
-\alias{migration.connectivity}
-\title{Migration Conncetivity Index}
+\name{migration.inequality}
+\alias{migration.inequality}
+\title{Migration Inequality Index}
 \usage{
-  migration.connectivity(m)
+  migration.inequality(m,
+    expected = c("equal", "weighted"))
 }
 \arguments{
   \item{m}{migration matrix}
+
+  \item{expected}{type of expected distribution}
 }
 \value{
-  number between 0 and 1 where zero shows no connections
-  between regions
+  number between 0 and 1 where 1 shows greater inequality
 }
 \description{
-  Measures the proportion of the total number of potential
-  interregional flows which are not zero.
+  Measures the distance from an expected distribution.
 }
 \examples{
 \dontrun{
 data(migration.hyp)
-migration.connectivity(migration.hyp)
+migration.inequality(migration.hyp)
+migration.inequality(migration.hyp, expected = 'weighted')
 data(migration.world)
-migration.connectivity(migration.world)
-}
+migration.inequality(migration.world)
+)}
 }
 \author{
   Gergely Daróczi

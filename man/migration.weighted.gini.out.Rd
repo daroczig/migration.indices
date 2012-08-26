@@ -1,8 +1,8 @@
-\name{migration.weighted.gini.in}
-\alias{migration.weighted.gini.in}
-\title{Migration-weighted In-migration Gini Index}
+\name{migration.weighted.gini.out}
+\alias{migration.weighted.gini.out}
+\title{Migration-weighted Out-migration Gini Index}
 \usage{
-  migration.weighted.gini.in(m, mgi)
+  migration.weighted.gini.out(m, mgo)
 }
 \arguments{
   \item{m}{migration matrix}
@@ -14,13 +14,13 @@
   number
 }
 \description{
-  Migration-weighted In-migration Gini Index
+  Migration-weighted Out-migration Gini Index
 }
 \examples{
 \dontrun{
 data(migration.hyp)
-migration.weighted.gini.in(migration.hyp)   #
-migration.weighted.gini.in(migration.hyp2)  #
+migration.weighted.gini.out(migration.hyp)   #
+migration.weighted.gini.out(migration.hyp2)  #
 }
 }
 \author{
@@ -35,7 +35,7 @@ migration.weighted.gini.in(migration.hyp2)  #
   435-464
 }
 \seealso{
-  \code{\link{migration.weighted.gini.out}}
+  \code{\link{migration.weighted.gini.in}}
   \code{\link{migration.weighted.gini.mean}}
 }
 

@@ -26,7 +26,7 @@ migration.effectiveness <- function(m) {
 
 #' Migration Conncetivity Index
 #'
-#' Meauseres the proportion of the total number of potential interregional flows which are not zero.
+#' Measures the proportion of the total number of potential interregional flows which are not zero.
 #' @param m migration matrix
 #' @return number between 0 and 1 where zero shows no connections between regions
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
@@ -51,24 +51,37 @@ migration.connectivity <- function(m) {
 
 #' Migration Inequality Index
 #'
-#' Meauseres the proportion of the total number of potential interregional flows which are not zero.
+#' Measures the distance from an expected distribution.
 #' @param m migration matrix
+#' @param expected type of expected distribution
 #' @return number between 0 and 1 where 1 shows greater inequality
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.inequality(migration.hyp)
+#' migration.inequality(migration.hyp, expected = 'weighted')
 #' data(migration.world)
 #' migration.inequality(migration.world)
 #' )}
 #' @author Gergely Daróczi
 #' @export
-## migration.inequality <- function(m) {
+migration.inequality <- function(m, expected = c('equal', 'weighted')) {
 
-##     check.migration.matrix(m)
+    expected <- match.arg(expected)
+    check.migration.matrix(m)
 
-##     diag(m)     <- NA
-##     m.expected  <- ???  ## TODO: what is that expected matrix? p. 454
-##     sum(m - m.expected na.rm = TRUE) * 0.5
+    diag(m) <- NA
+    n       <- nrow(m)
 
-## }
+    if (expected == 'equal') {
+        m.expected       <- matrix(sum(m, na.rm = TRUE) / (n^2 - n), n, n)
+        diag(m.expected) <- NA
+    } else {
+        m.expected <- m
+        for (i in 1:nrow(m))
+            m.expected[i, -i] <- colSums(m.expected[, -i], na.rm = TRUE) * rowSums(m, na.rm = TRUE)[i] / sum(colSums(m.expected[, -i], na.rm = TRUE))
+    }
+
+    sum(abs(m - m.expected), na.rm = TRUE) * 0.5
+
+}

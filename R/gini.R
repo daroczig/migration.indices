@@ -21,7 +21,7 @@ check.migration.matrix <- function(m) {
     if (length(which(is.na(m[xor(upper.tri(m), lower.tri(m))]))) > 0)
         stop('Missing values (outside of diagonal) found in provided matrix!')
     if (!any(all(is.na(diag(m))), all(diag(m) == 0)))
-        stop('Diagonal should be zero is missing.')
+        stop('Diagonal should be zero or missing.')
 
     return(invisible(TRUE))
 
@@ -215,6 +215,34 @@ migration.gini.out <- function(m) {
 }
 
 
+#' Migration-weighted Out-migration Gini Index
+#'
+#' @param m migration matrix
+#' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
+#' @return number
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.weighted.gini.out(migration.hyp)   #
+#' migration.weighted.gini.out(migration.hyp2)  #
+#' }
+#' @author Gergely Daróczi
+#' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.mean}}
+#' @export
+migration.weighted.gini.out <- function(m, mgo) {
+
+    diag(m)     <- NA
+    n           <- nrow(m)
+    m.sum       <- sum(m, na.rm = TRUE)
+
+    if (missing(mgo))
+        mgo <- migration.gini.out(m)
+
+    sum(mgo * colSums(m, na.rm = TRUE) / m.sum) / n
+
+}
+
+
 #' In-migration Field Gini Index
 #'
 #' @param m migration matrix
@@ -245,6 +273,7 @@ migration.gini.in <- function(m) {
 #' Migration-weighted In-migration Gini Index
 #'
 #' @param m migration matrix
+#' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
 #' @return number
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
 #' @examples \dontrun{
@@ -253,14 +282,44 @@ migration.gini.in <- function(m) {
 #' migration.weighted.gini.in(migration.hyp2)  #
 #' }
 #' @author Gergely Daróczi
+#' @seealso \code{\link{migration.weighted.gini.out}} \code{\link{migration.weighted.gini.mean}}
 #' @export
-migration.weighted.gini.in <- function(m) {
+migration.weighted.gini.in <- function(m, mgi) {
 
     diag(m)     <- NA
     n           <- nrow(m)
     m.sum       <- sum(m, na.rm = TRUE)
 
-    sum(migration.gini.in(m) * rowSums(m, na.rm = TRUE) / m.sum) / n
+    if (missing(mgi))
+        mgi <- migration.gini.in(m)
+
+    sum(mgi * rowSums(m, na.rm = TRUE) / m.sum) / n
+
+}
+
+#' Migration-weighted Mean Gini Index
+#'
+#' @param m migration matrix
+#' @param mwgi optionally passed (precomputed) Migration-weighted In-migration Gini Index
+#' @param mwgo optionally passed (precomputed) Migration-weighted Out-migration Gini Index
+#' @return number
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.weighted.gini.mean(migration.hyp)   #
+#' migration.weighted.gini.mean(migration.hyp2)  #
+#' }
+#' @author Gergely Daróczi
+#' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.out}}
+#' @export
+migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
+
+    if (missing(mwgi))
+        mwgi <- migration.weighted.gini.in(m)
+    if (missing(mwgo))
+        mwgo <- migration.weighted.gini.in(outer)
+
+    (mwgi + mwgo) / 2
 
 }
 
@@ -285,9 +344,13 @@ migration.gini <- function(m) {
              migration.gini.in            = migration.gini.in(m),
              migration.gini.out           = migration.gini.out(m)
       )
+
     res$migration.gini.row.standardized           <- migration.gini.row.standardized(m, res$migration.gini.total)
     res$migration.gini.col.standardized           <- migration.gini.col.standardized(m, res$migration.gini.total)
     res$migration.gini.exchange.standardized      <- migration.gini.exchange.standardized(m, res$migration.gini.total)
+    res$migration.gini.in.weighted                <- migration.weighted.gini.in(m, res$migration.gini.in)
+    res$migration.gini.out.weighted               <- migration.weighted.gini.out(m, res$migration.gini.out)
+    res$migration.gini.mean.weighted              <- migration.weighted.gini.mean(m, res$migration.gini.in.weighted, res$migration.gini.out.weighted)
 
     class(res) <- 'migration.gini'
     return(res)
@@ -299,15 +362,18 @@ migration.gini <- function(m) {
 print.migration.gini <- function(x) {
 
     cat('\n')
-    cat('Total Flows Gini Index:           ', x$migration.gini.total, '\n')
-    cat('Rows Gini Index:                  ', x$migration.gini.row, '\n')
-    cat('Standardized Rows Gini Index:     ', x$migration.gini.row.standardized, '\n')
-    cat('Columns Gini Index:               ', x$migration.gini.col, '\n')
-    cat('Standardized Columns Gini Index:  ', x$migration.gini.col.standardized, '\n')
-    cat('Exchange Gini Index:              ', x$migration.gini.exchange, '\n')
-    cat('Standardized Exchange Gini Index: ', x$migration.gini.exchange.standardized, '\n')
-    cat('In-migration Field Gini Index:    ', 'vector', '\n')
-    cat('Out-migration Field Gini Index:   ', 'vector', '\n')
+    cat('Total Flows Gini Index:             ', x$migration.gini.total, '\n')
+    cat('Rows Gini Index:                    ', x$migration.gini.row, '\n')
+    cat('Standardized Rows Gini Index:       ', x$migration.gini.row.standardized, '\n')
+    cat('Columns Gini Index:                 ', x$migration.gini.col, '\n')
+    cat('Standardized Columns Gini Index:    ', x$migration.gini.col.standardized, '\n')
+    cat('Exchange Gini Index:                ', x$migration.gini.exchange, '\n')
+    cat('Standardized Exchange Gini Index:   ', x$migration.gini.exchange.standardized, '\n')
+    cat('In-migration Field Gini Index:      ', 'vector', '\n')
+    cat('Weighted In-migration Gini Index:   ', x$migration.gini.in.weighted, '\n')
+    cat('Out-migration Field Gini Index:     ', 'vector', '\n')
+    cat('Weighted Out-migration Gini Index:  ', x$migration.gini.out.weighted, '\n')
+    cat('Migration-weighted Mean Gini Index: ', x$migration.gini.mean.weighted, '\n')
     cat('\n')
 
 }
