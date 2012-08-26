@@ -86,7 +86,7 @@ migration.gini.row <- function(m) {
 #'
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
-#' @return number
+#' @return percentage
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -129,7 +129,7 @@ migration.gini.col <- function(m) {
 #'
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
-#' @return number
+#' @return percentage
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
 #' @examples \dontrun{
 #' data(migration.hyp)

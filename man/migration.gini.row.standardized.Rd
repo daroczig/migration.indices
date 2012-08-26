@@ -12,7 +12,7 @@
   pre-computed Total Flows Gini Index to save resources}
 }
 \value{
-  number
+  percentage
 }
 \description{
   Standardized Rows Gini Index
