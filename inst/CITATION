@@ -12,4 +12,4 @@ citEntry(entry       = "Manual",
 			     year,
 			     "). migration.indices. ",
 			     vers,
-			     ", URL http://cran.r-project.org/package=saves", sep = ""))
+			     ", URL http://github.com/daroczig/migration.indices", sep = ""))
