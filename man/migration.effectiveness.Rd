@@ -23,12 +23,9 @@ data(migration.world)
 migration.effectiveness(migration.world)
 }
 }
-\author{
-  Gergely Daróczi
-}
 \references{
-  Martin Bell and Salut Muhidin (2009): Cross-National
-  Comparisons of Internal Migration. Research Paper
-  2009/30. UNDP.
+  Martin Bell and Salut Muhidin (2009) {Cross-National
+  Comparisons of Internal Migration}. Research Paper. UNDP.
+  \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
 }
 

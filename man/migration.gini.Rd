@@ -17,7 +17,4 @@ migration.gini(migration.hyp)
 migration.gini(migration.hyp2)
 }
 }
-\author{
-  Gergely Daróczi
-}
 

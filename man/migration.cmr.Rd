@@ -25,14 +25,10 @@ data(migration.world)
 migration.cmr(migration.world, 6e+9)
 }
 }
-\author{
-  Gergely Daróczi
-}
 \references{
   Philip Rees, Martin Bell, Oliver Duke-Williams and Marcus
-  Blake (2000): Problems and Solutions in the Measurement
-  of Migration Intensities: Australia and Britain Compared.
-  In. Population Studies, Vol. 54, No. 2 (Jul., 2000), pp.
-  207-222
+  Blake (2000) Problems and Solutions in the Measurement of
+  Migration Intensities: Australia and Britain Compared.
+  \empg{Population Studies} \bold{54}, 207--222
 }
 

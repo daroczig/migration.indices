@@ -24,12 +24,9 @@ migration.gini.col.standardized(migration.hyp)     # 25
 migration.gini.col.standardized(migration.hyp2)    # 22.22222
 }
 }
-\author{
-  Gergely Daróczi
-}
 \references{
-  David A. Plane and Gordon F. Mulligan (1997): Measuring
-  Spatial Focusing in a Migration System. In. Demography,
-  Vol. 34, No. 2 (May, 1997), pp. 251-262
+  David A. Plane and Gordon F. Mulligan (1997) Measuring
+  Spatial Focusing in a Migration System. \emph{Demography}
+  \bold{34}, 251--262
 }
 

@@ -10,9 +10,6 @@
 \description{
   .. content for
 }
-\author{
-  Gergely Daróczi
-}
 \references{
   Rogers, A. and Raymer, J. (1998) The spatial focus of US
   interstate migration flows. Int. J PoplnGeogr,4, 63-80.

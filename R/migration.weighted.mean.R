@@ -8,7 +8,6 @@
 #' .. content for
 #' @param m
 #' @references Rogers, A. and Raymer, J. (1998) The spatial focus of US interstate migration flows. Int. J PoplnGeogr,4, 63-80.
-#' @author Gergely Daróczi
 migration.gini.in.standardized <- function(m) {
 
     check.migration.matrix(m)

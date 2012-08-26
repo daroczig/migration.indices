@@ -5,7 +5,6 @@
 #' A migration matrix is a symmetric matrix with the exact same row and column names. The diagonal equals to zero. The upper triangle shows the in- and the lower triangle shows the out-migration.
 #' @param m R object to check
 #' @return (invisibly) TRUE
-#' @author Gergely Daróczi
 #' @keywords internal
 check.migration.matrix <- function(m) {
 
@@ -33,15 +32,14 @@ check.migration.matrix <- function(m) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
-#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.total(migration.hyp)        # 0.2222222
 #' migration.gini.total(migration.hyp2)       # 0.1875
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.total <- function(m) {
 
@@ -62,13 +60,12 @@ migration.gini.total <- function(m) {
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.row(migration.hyp)  # 0
 #' migration.gini.row(migration.hyp2) # 0.02083333
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.row <- function(m) {
 
@@ -87,13 +84,12 @@ migration.gini.row <- function(m) {
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
 #' @return percentage
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.row.standardized(migration.hyp)     # 0
 #' migration.gini.row.standardized(migration.hyp2)    # 11.11111
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.row.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
 
@@ -105,13 +101,12 @@ migration.gini.row.standardized <- function(m, migration.gini.total = migration.
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.col(migration.hyp)  # 0.05555556
 #' migration.gini.col(migration.hyp2) # 0.04166667
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.col <- function(m) {
 
@@ -130,13 +125,12 @@ migration.gini.col <- function(m) {
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
 #' @return percentage
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.col.standardized(migration.hyp)     # 25
 #' migration.gini.col.standardized(migration.hyp2)    # 22.22222
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.col.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
 
@@ -148,13 +142,12 @@ migration.gini.col.standardized <- function(m, migration.gini.total = migration.
 #'
 #' @param m migration matrix
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.exchange(migration.hyp)     # 0.05555556
 #' migration.gini.exchange(migration.hyp2)    # 0.04166667
 #' }
-#' @author Gergely Daróczi
 migration.gini.exchange <- function(m) {
 
     check.migration.matrix(m)
@@ -174,13 +167,12 @@ migration.gini.exchange <- function(m) {
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
 #' @return number
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
+#' @references David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.exchange.standardized(migration.hyp)  # 25
 #' migration.gini.exchange.standardized(migration.hyp2) # 22.22222
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.exchange.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
 
@@ -194,15 +186,14 @@ migration.gini.exchange.standardized <- function(m, migration.gini.total = migra
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
-#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.out(migration.hyp)  # 0 0 0
 #' migration.gini.out(migration.hyp2) # 0.000 0.125 0.000
 #' }
-#' @author Gergely Daróczi
 migration.gini.out <- function(m) {
 
     check.migration.matrix(m)
@@ -220,13 +211,12 @@ migration.gini.out <- function(m) {
 #' @param m migration matrix
 #' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
 #' @return number
-#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.weighted.gini.out(migration.hyp)   #
 #' migration.weighted.gini.out(migration.hyp2)  #
 #' }
-#' @author Gergely Daróczi
 #' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.mean}}
 #' @export
 migration.weighted.gini.out <- function(m, mgo) {
@@ -248,15 +238,14 @@ migration.weighted.gini.out <- function(m, mgo) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 251-262
-#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
+#' \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.in(migration.hyp)   # 0.1000000 0.2500000 0.1666667
 #' migration.gini.in(migration.hyp2)  # 0.1000000 0.0000000 0.2142857
 #' }
-#' @author Gergely Daróczi
 #' @export
 migration.gini.in <- function(m) {
 
@@ -275,13 +264,12 @@ migration.gini.in <- function(m) {
 #' @param m migration matrix
 #' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
 #' @return number
-#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.weighted.gini.in(migration.hyp)   # 0.1222222
 #' migration.weighted.gini.in(migration.hyp2)  # 0.05238095
 #' }
-#' @author Gergely Daróczi
 #' @seealso \code{\link{migration.weighted.gini.out}} \code{\link{migration.weighted.gini.mean}}
 #' @export
 migration.weighted.gini.in <- function(m, mgi) {
@@ -303,13 +291,12 @@ migration.weighted.gini.in <- function(m, mgi) {
 #' @param mwgi optionally passed (precomputed) Migration-weighted In-migration Gini Index
 #' @param mwgo optionally passed (precomputed) Migration-weighted Out-migration Gini Index
 #' @return number
-#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
+#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.weighted.gini.mean(migration.hyp)  # 0.06111111
 #' migration.weighted.gini.mean(migration.hyp2) # 0.03660714
 #' }
-#' @author Gergely Daróczi
 #' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.out}}
 #' @export
 migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
@@ -327,7 +314,6 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 #' Spatial Gini Indexes
 #'
 #' @param m migration matrix
-#' @author Gergely Daróczi
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini(migration.hyp)

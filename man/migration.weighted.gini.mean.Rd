@@ -26,16 +26,12 @@ migration.weighted.gini.mean(migration.hyp)  # 0.06111111
 migration.weighted.gini.mean(migration.hyp2) # 0.03660714
 }
 }
-\author{
-  Gergely Daróczi
-}
 \references{
   M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees,
-  J. Stillwell and G. Hugo (2002): Cross-National
-  Comparison of Internal Migration. Issues and Measures.
-  In. Journal of the Royal Statistical Society. Series A
-  (Statistics in Society), Vol. 165, No. 3 (2002), pp.
-  435-464
+  J. Stillwell and G. Hugo (2002) Cross-National Comparison
+  of Internal Migration. Issues and Measures. \emph{Journal
+  of the Royal Statistical Society. Series A (Statistics in
+  Society)} \bold{165}, 435--464
 }
 \seealso{
   \code{\link{migration.weighted.gini.in}}

@@ -20,8 +20,5 @@
   The upper triangle shows the in- and the lower triangle
   shows the out-migration.
 }
-\author{
-  Gergely Daróczi
-}
 \keyword{internal}
 
