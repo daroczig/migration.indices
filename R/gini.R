@@ -278,8 +278,8 @@ migration.gini.in <- function(m) {
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
 #' @examples \dontrun{
 #' data(migration.hyp)
-#' migration.weighted.gini.in(migration.hyp)   #
-#' migration.weighted.gini.in(migration.hyp2)  #
+#' migration.weighted.gini.in(migration.hyp)   # 0.1222222
+#' migration.weighted.gini.in(migration.hyp2)  # 0.05238095
 #' }
 #' @author Gergely Daróczi
 #' @seealso \code{\link{migration.weighted.gini.out}} \code{\link{migration.weighted.gini.mean}}
@@ -306,8 +306,8 @@ migration.weighted.gini.in <- function(m, mgi) {
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002): Cross-National Comparison of Internal Migration. Issues and Measures. In. Journal of the Royal Statistical Society. Series A (Statistics in Society), Vol. 165, No. 3 (2002), pp. 435-464
 #' @examples \dontrun{
 #' data(migration.hyp)
-#' migration.weighted.gini.mean(migration.hyp)   #
-#' migration.weighted.gini.mean(migration.hyp2)  #
+#' migration.weighted.gini.mean(migration.hyp)  # 0.06111111
+#' migration.weighted.gini.mean(migration.hyp2) # 0.03660714
 #' }
 #' @author Gergely Daróczi
 #' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.out}}
@@ -317,7 +317,7 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
     if (missing(mwgi))
         mwgi <- migration.weighted.gini.in(m)
     if (missing(mwgo))
-        mwgo <- migration.weighted.gini.in(outer)
+        mwgo <- migration.weighted.gini.out(m)
 
     (mwgi + mwgo) / 2
 
@@ -354,6 +354,7 @@ migration.gini <- function(m) {
 
     class(res) <- 'migration.gini'
     return(res)
+
 }
 
 

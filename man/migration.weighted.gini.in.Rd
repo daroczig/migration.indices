@@ -19,8 +19,8 @@
 \examples{
 \dontrun{
 data(migration.hyp)
-migration.weighted.gini.in(migration.hyp)   #
-migration.weighted.gini.in(migration.hyp2)  #
+migration.weighted.gini.in(migration.hyp)   # 0.1222222
+migration.weighted.gini.in(migration.hyp2)  # 0.05238095
 }
 }
 \author{
