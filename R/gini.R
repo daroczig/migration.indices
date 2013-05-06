@@ -194,6 +194,7 @@ migration.gini.exchange.standardized <- function(m, migration.gini.total = migra
 #' migration.gini.out(migration.hyp)  # 0 0 0
 #' migration.gini.out(migration.hyp2) # 0.000 0.125 0.000
 #' }
+#' @export
 migration.gini.out <- function(m) {
 
     check.migration.matrix(m)
