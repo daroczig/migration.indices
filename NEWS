@@ -1,0 +1,27 @@
+
+migration.indices 0.2   (2013-05-27)
+----------------------------------------------------------------
+
+ * add: (Aggregated) Coefficient of Variation
+ * code clean-up
+
+migration.indices 0.1   (2012-08-26)
+----------------------------------------------------------------
+
+ * add: weighted Gini
+
+migration.indices 0.1   (2012-05-24)
+----------------------------------------------------------------
+
+ * add: standard migration indices like CMR, connectivity and effectiveness
+ * add: standardized Gini
+
+migration.indices 0.1   (2012-05-16)
+----------------------------------------------------------------
+
+ * add: demo data
+
+migration.indices 0.1   (2012-05-15)
+----------------------------------------------------------------
+
+Initial and rather basic release of the package on GitHub wih a few Gini indices.
