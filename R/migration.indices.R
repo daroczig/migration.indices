@@ -26,7 +26,7 @@ NULL
 #' @format migration matrix
 #' @docType data
 #' @references \itemize{
-#'   \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 253
+#'   \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, pp. 253
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @keywords data
