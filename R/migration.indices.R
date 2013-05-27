@@ -25,4 +25,5 @@ NULL
 #' @docType data
 #' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 253
 #' @keywords data
+#' @aliases migration.hyp2
 NULL

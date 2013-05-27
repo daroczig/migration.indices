@@ -17,6 +17,5 @@ Collate:
     'gini.R'
     'migration.indices.R'
     'crude.R'
-    'migration.weighted.mean.R'
     'others.R'
     'acv.R'

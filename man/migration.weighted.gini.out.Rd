@@ -7,7 +7,7 @@
 \arguments{
   \item{m}{migration matrix}
 
-  \item{mgi}{optionally passed (precomputed) Migration
+  \item{mgo}{optionally passed (precomputed) Migration
   In-migration Gini Index}
 }
 \value{

@@ -1,6 +1,7 @@
 \docType{data}
 \name{migration.hyp}
 \alias{migration.hyp}
+\alias{migration.hyp2}
 \title{Hypotetical Migration Matrix}
 \format{migration matrix}
 \description{

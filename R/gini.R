@@ -210,7 +210,7 @@ migration.gini.out <- function(m) {
 #' Migration-weighted Out-migration Gini Index
 #'
 #' @param m migration matrix
-#' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
+#' @param mgo optionally passed (precomputed) Migration In-migration Gini Index
 #' @return number
 #' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' @examples \dontrun{
@@ -347,7 +347,7 @@ migration.gini <- function(m) {
 
 #' @method print migration.gini
 #' @S3method print migration.gini
-print.migration.gini <- function(x) {
+print.migration.gini <- function(x, ...) {
 
     cat('\n')
     cat('Total Flows Gini Index:             ', x$migration.gini.total, '\n')
