@@ -1,8 +1,8 @@
-\name{migration.cv.out}
-\alias{migration.cv.out}
-\title{Out-migration Coefficient of Variation}
+\name{migration.acv.out}
+\alias{migration.acv.out}
+\title{Aggregated Out-migration Coefficient of Variation}
 \usage{
-  migration.cv.out(m)
+  migration.acv.out(m)
 }
 \arguments{
   \item{m}{migration matrix}
@@ -11,13 +11,13 @@
   number
 }
 \description{
-  Out-migration Coefficient of Variation
+  Aggregated Out-migration Coefficient of Variation
 }
 \examples{
 \dontrun{
 data(migration.hyp)
-migration.cv.out(migration.hyp)    # 0 0 0
-migration.cv.out(migration.hyp2)   # 0.00 0.25 0.00
+migration.acv.out(migration.hyp)    # 0
+migration.acv.out(migration.hyp2)   # 0.125
 }
 }
 \references{

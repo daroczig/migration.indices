@@ -36,3 +36,60 @@ migration.cv.out <- function(m) {
     n       <- ncol(m) - 1
     apply(m, 1, function(m.row) (sd(m.row, na.rm = TRUE) * sqrt((n - 1) / n)) / mean(m.row, na.rm = TRUE))
 }
+
+
+#' Aggregated In-migration Coefficient of Variation
+#'
+#' @param m migration matrix
+#' @return number
+#' @references \itemize{
+#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#' }
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.acv.in(migration.hyp)    # 0.3333333
+#' migration.acv.in(migration.hyp2)   # 0.25
+#' }
+#' @export
+migration.acv.in <- function(m) {
+    diag(m) <- NA
+    n       <- ncol(m) - 1
+    sum(colSums(m, na.rm = TRUE) / sum(m, na.rm = TRUE) * migration.cv.in(m))
+}
+
+
+#' Aggregated Out-migration Coefficient of Variation
+#'
+#' @param m migration matrix
+#' @return number
+#' @references \itemize{
+#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#' }
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.acv.out(migration.hyp)    # 0
+#' migration.acv.out(migration.hyp2)   # 0.125
+#' }
+#' @export
+migration.acv.out <- function(m) {
+    diag(m) <- NA
+    n       <- ncol(m) - 1
+    sum(rowSums(m, na.rm = TRUE) / sum(m, na.rm = TRUE) * migration.cv.out(m))
+}
+
+
+#' Aggregated System-wide Coefficient of Variation
+#'
+#' @param m migration matrix
+#' @return number
+#' @references \itemize{
+#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#' }
+#' @examples \dontrun{
+#' data(migration.hyp)
+#' migration.acv(migration.hyp)    # 0.3333333
+#' migration.acv(migration.hyp2)   # 0.375
+#' }
+#' @export
+migration.acv <- function(m)
+    migration.acv.in(m) + migration.acv.out(m)
