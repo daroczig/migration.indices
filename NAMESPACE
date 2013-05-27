@@ -1,5 +1,7 @@
 export(migration.cmr)
 export(migration.connectivity)
+export(migration.cv.in)
+export(migration.cv.out)
 export(migration.effectiveness)
 export(migration.gini.col.standardized)
 export(migration.gini.col)
