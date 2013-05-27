@@ -26,9 +26,10 @@ migration.cmr(migration.world, 6e+9)
 }
 }
 \references{
-  Philip Rees, Martin Bell, Oliver Duke-Williams and Marcus
-  Blake (2000) Problems and Solutions in the Measurement of
-  Migration Intensities: Australia and Britain Compared.
-  \emph{Population Studies} \bold{54}, 207--222
+  \itemize{ \item Philip Rees, Martin Bell, Oliver
+  Duke-Williams and Marcus Blake (2000) Problems and
+  Solutions in the Measurement of Migration Intensities:
+  Australia and Britain Compared. \emph{Population Studies}
+  \bold{54}, 207--222 }
 }
 

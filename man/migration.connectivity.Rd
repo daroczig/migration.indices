@@ -24,10 +24,11 @@ migration.connectivity(migration.world)
 }
 }
 \references{
-  M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees,
-  J. Stillwell and G. Hugo (2002) Cross-National Comparison
-  of Internal Migration. Issues and Measures. \emph{Journal
-  of the Royal Statistical Society. Series A (Statistics in
-  Society)} \bold{165}, 435--464
+  \itemize{ \item M. Bell, M. Blake, P. Boyle, O.
+  Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002)
+  Cross-National Comparison of Internal Migration. Issues
+  and Measures. \emph{Journal of the Royal Statistical
+  Society. Series A (Statistics in Society)} \bold{165},
+  435--464 }
 }
 

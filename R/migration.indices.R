@@ -1,6 +1,6 @@
 #' \emph{Migration indices}
 #'
-#' This package provides different indices to show (un)equality of migration.
+#' This package provides various indices, like Crude Migration Rate, different Gini indices or the Coefficient of Variation among others, to show the (un)quality of migration.
 #' @docType package
 #' @name migration.indices
 NULL
@@ -12,7 +12,9 @@ NULL
 #' @name migration.world
 #' @format migration matrix
 #' @docType data
-#' @references World Bank (2010): Global Bilateral Migration Database. \url{http://data.worldbank.org/data-catalog/global-bilateral-migration-database}
+#' @references \itemize{
+#'   \item World Bank (2010): Global Bilateral Migration Database. \url{http://data.worldbank.org/data-catalog/global-bilateral-migration-database}
+#' }
 #' @keywords data
 NULL
 
@@ -23,7 +25,10 @@ NULL
 #' @name migration.hyp
 #' @format migration matrix
 #' @docType data
-#' @references David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 253
+#' @references \itemize{
+#'   \item David A. Plane and Gordon F. Mulligan (1997): Measuring Spatial Focusing in a Migration System. In. Demography, Vol. 34, No. 2 (May, 1997), pp. 253
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#' }
 #' @keywords data
 #' @aliases migration.hyp2
 NULL

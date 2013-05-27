@@ -25,4 +25,10 @@ migration.cv.in(migration.hyp2)   # 0.2000000 0.0000000 0.4285714
   Measuring the Spatial Focus of Migration Patterns.
   \emph{The Professional Geographer} \bold{50}, 232--242 }
 }
+\seealso{
+  \code{\link{migration.cv.out}}
+  \code{\link{migration.acv.in}}
+  \code{\link{migration.acv.out}}
+  \code{\link{migration.acv}}
+}
 

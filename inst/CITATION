@@ -4,12 +4,12 @@ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
 citEntry(entry       = "Manual",
 	 title       = "migration.indices",
-	 author      = as.person("Gergely Daróczi"),
+	 author      = as.person("Gergely Daróczi and Lajos Bálint"),
 	 year        = year,
 	 note        = vers,
-	 url         = "http://github.com/daroczig/migration.indices",
-	 textVersion = paste("Daróczi, G. (",
+	 url         = "http://cran.r-project.org/package=migration.indices",
+	 textVersion = paste("Daróczi, G. and Bálint, L. (",
 			     year,
 			     "). migration.indices. ",
 			     vers,
-			     ", URL http://github.com/daroczig/migration.indices", sep = ""))
+			     ", URL http://cran.r-project.org/package=migration.indices", sep = ""))

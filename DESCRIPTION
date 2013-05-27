@@ -1,17 +1,18 @@
 Package: migration.indices
-Maintainer: Gergely Daróczi <gergely@snowl.net>
+Maintainer: Gergely Daróczi <daroczig@rapporter.net>
 License: AGPL-3
 BugReports: https://github.com/daroczig/migration.indices/issues
 Title: Migration indices
 LazyData: no
 Type: Package
 Author: Lajos Bálint <balint@demografia.hu> and Gergely Daróczi
-    <gergely@snowl.net>
-Description: This package provides different indices to show (un)quality of
-    migration.
-Version: 0.1
+    <daroczig@rapporter.net>
+Description: This package provides various indices, like Crude Migration Rate,
+    different Gini indices or the Coefficient of Variation among others, to
+    show the (un)quality of migration.
+Version: 0.2
 URL: http://github.com/daroczig/migration.indices
-Date: 2012-05-16
+Date: 2013-05-27
 Encoding: UTF-8
 Collate:
     'gini.R'

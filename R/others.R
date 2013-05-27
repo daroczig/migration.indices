@@ -3,7 +3,9 @@
 #' Measures the degree of (a)symmetry or (dis)equilibrium in the network of interregional migration flows.
 #' @param m migration matrix
 #' @return number between 0 and 100 where the higher number shows an efficient mechanism of population redistribution
-#' @references Martin Bell and Salut Muhidin (2009) {Cross-National Comparisons of Internal Migration}. Research Paper. UNDP. \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
+#' @references \itemize{
+#'   \item Martin Bell and Salut Muhidin (2009) {Cross-National Comparisons of Internal Migration}. Research Paper. UNDP. \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.effectiveness(migration.hyp)
@@ -28,7 +30,9 @@ migration.effectiveness <- function(m) {
 #' Measures the proportion of the total number of potential interregional flows which are not zero.
 #' @param m migration matrix
 #' @return number between 0 and 1 where zero shows no connections between regions
-#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
+#' @references \itemize{
+#'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.connectivity(migration.hyp)
@@ -53,7 +57,9 @@ migration.connectivity <- function(m) {
 #' @param m migration matrix
 #' @param expected type of expected distribution
 #' @return number between 0 and 1 where 1 shows greater inequality
-#' @references M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
+#' @references \itemize{
+#'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
+#' }
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.inequality(migration.hyp)

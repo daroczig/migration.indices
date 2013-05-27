@@ -4,7 +4,9 @@
 \alias{migration.indices-package}
 \title{\emph{Migration indices}}
 \description{
-  This package provides different indices to show
-  (un)equality of migration.
+  This package provides various indices, like Crude
+  Migration Rate, different Gini indices or the Coefficient
+  of Variation among others, to show the (un)quality of
+  migration.
 }
 

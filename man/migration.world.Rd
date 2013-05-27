@@ -8,8 +8,10 @@
   stocks in 2000 with 226 economies involved.
 }
 \references{
-  World Bank (2010): Global Bilateral Migration Database.
+  \itemize{ \item World Bank (2010): Global Bilateral
+  Migration Database.
   \url{http://data.worldbank.org/data-catalog/global-bilateral-migration-database}
+  }
 }
 \keyword{data}
 \keyword{datasets}

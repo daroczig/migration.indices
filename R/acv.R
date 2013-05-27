@@ -3,7 +3,7 @@
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -11,6 +11,7 @@
 #' migration.cv.in(migration.hyp2)   # 0.2000000 0.0000000 0.4285714
 #' }
 #' @export
+#' @seealso \code{\link{migration.cv.out}} \code{\link{migration.acv.in}} \code{\link{migration.acv.out}} \code{\link{migration.acv}}
 migration.cv.in <- function(m) {
     diag(m) <- NA
     n       <- ncol(m) - 1
@@ -23,7 +24,7 @@ migration.cv.in <- function(m) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -31,6 +32,7 @@ migration.cv.in <- function(m) {
 #' migration.cv.out(migration.hyp2)   # 0.00 0.25 0.00
 #' }
 #' @export
+#' @seealso \code{\link{migration.cv.in}} \code{\link{migration.acv.in}} \code{\link{migration.acv.out}} \code{\link{migration.acv}}
 migration.cv.out <- function(m) {
     diag(m) <- NA
     n       <- ncol(m) - 1
@@ -43,7 +45,7 @@ migration.cv.out <- function(m) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -51,6 +53,7 @@ migration.cv.out <- function(m) {
 #' migration.acv.in(migration.hyp2)   # 0.25
 #' }
 #' @export
+#' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.out}} \code{\link{migration.acv}}
 migration.acv.in <- function(m) {
     diag(m) <- NA
     n       <- ncol(m) - 1
@@ -63,7 +66,7 @@ migration.acv.in <- function(m) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -71,6 +74,7 @@ migration.acv.in <- function(m) {
 #' migration.acv.out(migration.hyp2)   # 0.125
 #' }
 #' @export
+#' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.in}} \code{\link{migration.acv}}
 migration.acv.out <- function(m) {
     diag(m) <- NA
     n       <- ncol(m) - 1
@@ -83,7 +87,7 @@ migration.acv.out <- function(m) {
 #' @param m migration matrix
 #' @return number
 #' @references \itemize{
-#' \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
+#'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -91,5 +95,6 @@ migration.acv.out <- function(m) {
 #' migration.acv(migration.hyp2)   # 0.375
 #' }
 #' @export
+#' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.in}} \code{\link{migration.acv.out}}
 migration.acv <- function(m)
     migration.acv.in(m) + migration.acv.out(m)

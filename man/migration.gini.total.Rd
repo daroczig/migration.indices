@@ -30,4 +30,11 @@ migration.gini.total(migration.hyp2)       # 0.1875
   Royal Statistical Society. Series A (Statistics in
   Society)} \bold{165}, 435--464 }
 }
+\seealso{
+  \code{\link{migration.gini.col}}
+  \code{\link{migration.gini.row}}
+  \code{\link{migration.gini.exchange}}
+  \code{\link{migration.gini.in}}
+  \code{\link{migration.gini.out}}
+}
 

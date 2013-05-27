@@ -24,8 +24,10 @@ migration.effectiveness(migration.world)
 }
 }
 \references{
-  Martin Bell and Salut Muhidin (2009) {Cross-National
-  Comparisons of Internal Migration}. Research Paper. UNDP.
+  \itemize{ \item Martin Bell and Salut Muhidin (2009)
+  {Cross-National Comparisons of Internal Migration}.
+  Research Paper. UNDP.
   \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
+  }
 }
 

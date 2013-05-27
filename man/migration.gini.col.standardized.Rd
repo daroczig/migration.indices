@@ -25,8 +25,12 @@ migration.gini.col.standardized(migration.hyp2)    # 22.22222
 }
 }
 \references{
-  David A. Plane and Gordon F. Mulligan (1997) Measuring
-  Spatial Focusing in a Migration System. \emph{Demography}
-  \bold{34}, 251--262
+  \itemize{ \item David A. Plane and Gordon F. Mulligan
+  (1997) Measuring Spatial Focusing in a Migration System.
+  \emph{Demography} \bold{34}, 251--262 }
+}
+\seealso{
+  \code{\link{migration.gini.col}}
+  \code{\link{migration.gini.row.standardized}}
 }
 
