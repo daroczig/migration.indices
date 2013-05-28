@@ -88,7 +88,7 @@ migration.acv.out <- function(m) {
 
 #' Aggregated System-wide Coefficient of Variation
 #'
-#' The Aggregated System-wide Coefficient of Variation is simply the sum of the Aggregated In-migration (\code{\link{migration.in}}) and the Aggregated Out-migration Coefficient of Variation (\code{\link{migration.acv}}).
+#' The Aggregated System-wide Coefficient of Variation is simply the sum of the Aggregated In-migration (\code{\link{migration.acv.in}}) and the Aggregated Out-migration Coefficient of Variation (\code{\link{migration.acv.out}}).
 #' @param m migration matrix
 #' @return A number where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{

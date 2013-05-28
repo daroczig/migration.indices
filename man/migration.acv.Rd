@@ -14,9 +14,9 @@
 \description{
   The Aggregated System-wide Coefficient of Variation is
   simply the sum of the Aggregated In-migration
-  (\code{\link{migration.in}}) and the Aggregated
+  (\code{\link{migration.acv.in}}) and the Aggregated
   Out-migration Coefficient of Variation
-  (\code{\link{migration.acv}}).
+  (\code{\link{migration.acv.out}}).
 }
 \examples{
 \dontrun{
