@@ -1,6 +1,6 @@
 \name{migration.connectivity}
 \alias{migration.connectivity}
-\title{Migration Conncetivity Index}
+\title{Migration Connectivity Index}
 \usage{
   migration.connectivity(m)
 }
@@ -8,12 +8,16 @@
   \item{m}{migration matrix}
 }
 \value{
-  number between 0 and 1 where zero shows no connections
-  between regions
+  A number between 0 and 1 where zero shows no connections
+  between regions.
 }
 \description{
-  Measures the proportion of the total number of potential
-  interregional flows which are not zero.
+  The Migration Connectivity Index measures "the proportion
+  of the total number of potential interregional flows
+  which are not zero": \deqn{I_{MC} = \sum_i \sum_{j \neq
+  i} \frac{MC_{ij}}{n(n-1)}} where \eqn{MC_{ij}} is 0 if
+  the flow from \eqn{i} to \eqn{j} is zero and let it be 1
+  otherwise.
 }
 \examples{
 \dontrun{

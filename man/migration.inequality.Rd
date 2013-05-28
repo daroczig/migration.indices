@@ -11,10 +11,13 @@
   \item{expected}{type of expected distribution}
 }
 \value{
-  number between 0 and 1 where 1 shows greater inequality
+  A number between 0 and 1 where 1 shows greater
+  inequality.
 }
 \description{
-  Measures the distance from an expected distribution.
+  Measures the distance from an expected distribution:
+  \deqn{I_{MI} = \frac{ \sum_i \sum_{j \neq i} | M_{ij} -
+  M_{ij}' | }{2} }
 }
 \examples{
 \dontrun{

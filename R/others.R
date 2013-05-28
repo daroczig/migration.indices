@@ -1,8 +1,10 @@
 #' Migration Effectiveness Index
 #'
-#' Measures the degree of (a)symmetry or (dis)equilibrium in the network of interregional migration flows.
+#' The Migration Effectiveness Index "measures the degree of (a)symmetry or (dis)equilibrium in the network of interregional migration flows":
+#' \deqn{MEI = 100\frac{ \sum_i |D_i - O_i| }{ \sum_i |D_i + O_i| }}
+#' where \eqn{D_i} is the total inflows to zone \eqn{i} and \eqn{O_i} is the total outflows from zone \eqn{i}.
 #' @param m migration matrix
-#' @return number between 0 and 100 where the higher number shows an efficient mechanism of population redistribution
+#' @return A number between 0 and 100 where the higher number shows an efficient mechanism of population redistribution.
 #' @references \itemize{
 #'   \item Martin Bell and Salut Muhidin (2009) {Cross-National Comparisons of Internal Migration}. Research Paper. UNDP. \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
 #' }
@@ -25,11 +27,13 @@ migration.effectiveness <- function(m) {
 }
 
 
-#' Migration Conncetivity Index
+#' Migration Connectivity Index
 #'
-#' Measures the proportion of the total number of potential interregional flows which are not zero.
+#' The Migration Connectivity Index measures "the proportion of the total number of potential interregional flows which are not zero":
+#' \deqn{I_{MC} = \sum_i \sum_{j \neq i} \frac{MC_{ij}}{n(n-1)}}
+#' where \eqn{MC_{ij}} is 0 if the flow from \eqn{i} to \eqn{j} is zero and let it be 1 otherwise.
 #' @param m migration matrix
-#' @return number between 0 and 1 where zero shows no connections between regions
+#' @return A number between 0 and 1 where zero shows no connections between regions.
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
@@ -53,10 +57,11 @@ migration.connectivity <- function(m) {
 
 #' Migration Inequality Index
 #'
-#' Measures the distance from an expected distribution.
+#' Measures the distance from an expected distribution:
+#' \deqn{I_{MI} = \frac{ \sum_i \sum_{j \neq i} | M_{ij} - M_{ij}' | }{2} }
 #' @param m migration matrix
 #' @param expected type of expected distribution
-#' @return number between 0 and 1 where 1 shows greater inequality
+#' @return A number between 0 and 1 where 1 shows greater inequality.
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }

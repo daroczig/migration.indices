@@ -8,12 +8,16 @@
   \item{m}{migration matrix}
 }
 \value{
-  number between 0 and 100 where the higher number shows an
-  efficient mechanism of population redistribution
+  A number between 0 and 100 where the higher number shows
+  an efficient mechanism of population redistribution.
 }
 \description{
-  Measures the degree of (a)symmetry or (dis)equilibrium in
-  the network of interregional migration flows.
+  The Migration Effectiveness Index "measures the degree of
+  (a)symmetry or (dis)equilibrium in the network of
+  interregional migration flows": \deqn{MEI = 100\frac{
+  \sum_i |D_i - O_i| }{ \sum_i |D_i + O_i| }} where
+  \eqn{D_i} is the total inflows to zone \eqn{i} and
+  \eqn{O_i} is the total outflows from zone \eqn{i}.
 }
 \examples{
 \dontrun{
