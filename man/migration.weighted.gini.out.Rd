@@ -10,17 +10,19 @@
   \item{mgo}{optionally passed (precomputed) Migration
   In-migration Gini Index}
 }
-\value{
-  number
-}
 \description{
-  Migration-weighted Out-migration Gini Index
+  The Migration-weighted Out-migration Gini Index is a
+  weighted version of the Out-migration Field Gini Index
+  (\code{\link{migration.gini.out}}) "according to the zone
+  of destination's share of total migration and the mean of
+  the weighted values is computed as": \deqn{MWG^O = \frac{
+  \sum_i G^O_i \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 }
 \examples{
 \dontrun{
 data(migration.hyp)
-migration.weighted.gini.out(migration.hyp)   #
-migration.weighted.gini.out(migration.hyp2)  #
+migration.weighted.gini.out(migration.hyp)   # 0
+migration.weighted.gini.out(migration.hyp2)  # 0.02083333
 }
 }
 \references{

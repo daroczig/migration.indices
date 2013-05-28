@@ -8,10 +8,19 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A numeric vector with the range of 0 to 1 where 0 means
+  no spatial focusing and 1 shows maximum focusing.
 }
 \description{
-  Out-migration Field Gini Index
+  The Out-migration Field Gini Index is a decomposed
+  version of the Rows Gini Index
+  (\code{\link{migration.gini.row}}) representing "the
+  contribution of each region's row to the total index" ()
+  (\code{\link{migration.gini.total}}): \deqn{G^O_i =
+  \frac{\sum_{j \neq i} \sum_{l \neq i,j} | M_{ij} - M_{il}
+  | }{ 2(n-2) \sum_{j \neq k} M_{ij}}} These Gini indices
+  facilitates the direct comparison of different
+  territories without further standardization.
 }
 \examples{
 \dontrun{

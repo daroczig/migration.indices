@@ -8,10 +8,17 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A number between 0 and 1 where 0 means no spatial
+  focusing and 1 shows maximum focusing.
 }
 \description{
-  Columns Gini Index
+  The Columns Gini index concentrates on the "relative
+  extent to which the destination selections of
+  in-migrations are spatially focused": \deqn{G^T_R =
+  \frac{\sum_j \sum_{i \neq j} \sum_{g \neq i,j} | M_{ij} -
+  M_{gj} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
+  This implementation solves the above formula by computing
+  the \code{dist} matrix for each columns.
 }
 \examples{
 \dontrun{

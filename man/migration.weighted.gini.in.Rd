@@ -10,11 +10,13 @@
   \item{mgi}{optionally passed (precomputed) Migration
   In-migration Gini Index}
 }
-\value{
-  number
-}
 \description{
-  Migration-weighted In-migration Gini Index
+  The Migration-weighted In-migration Gini Index is a
+  weighted version of the In-migration Field Gini Index
+  (\code{\link{migration.gini.in}}) "according to the zone
+  of destination's share of total migration and the mean of
+  the weighted values is computed as": \deqn{MWG^I = \frac{
+  \sum_j G^I_j \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 }
 \examples{
 \dontrun{

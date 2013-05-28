@@ -8,10 +8,19 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A numeric vector with the range of 0 to 1 where 0 means
+  no spatial focusing and 1 shows maximum focusing.
 }
 \description{
-  In-migration Field Gini Index
+  The In-migration Field Gini Index is a decomposed version
+  of the Columns Gini Index
+  (\code{\link{migration.gini.col}}) representing "the
+  contribution of each region's columns to the total index"
+  () (\code{\link{migration.gini.total}}): \deqn{G^I_j =
+  \frac{\sum_{i \neq j} \sum_{k \neq j,i} | M_{ij} - M_{kj}
+  | }{ 2(n-2) \sum_{i \neq j} M_{ij}}} These Gini indices
+  facilitates the direct comparison of different
+  territories without further standardization.
 }
 \examples{
 \dontrun{

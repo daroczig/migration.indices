@@ -8,10 +8,22 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A number between 0 and 1 where 0 means no spatial
+  focusing and 1 shows that all migrants are found in one
+  single flow.
 }
 \description{
-  Total Flows Gini Index
+  The Total Gini Index shows the overall concentration of
+  migration with a simple number computed by comparing each
+  cell of the migration matrix with every other cell except
+  for the diagonal: \deqn{G^T = \frac{\sum_i \sum_{j \neq
+  i} \sum_k \sum_{l \neq k} | M_{ij} - M_{kl} | }{
+  (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}} This
+  implementation solves the above formula by a simple loop
+  for performance issues to compare all values to the
+  others at one go, although smaller migration matrices
+  could also be addressed by a much faster \code{dist}
+  method. Please see the sources for more details.
 }
 \examples{
 \dontrun{

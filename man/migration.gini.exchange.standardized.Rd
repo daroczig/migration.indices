@@ -12,10 +12,18 @@
   pre-computed Total Flows Gini Index to save resources}
 }
 \value{
-  number
+  A percentage range from 0\% to 100\% where 0\% means that
+  the migration flows are uniform, while a higher value
+  indicates spatial focusing.
 }
 \description{
-  Standardized Exchange Gini Index
+  The standardized version of the Exchange Gini Index
+  (\code{\link{migration.gini.exchange}}) by dividing that
+  with the Total Flows Gini Index
+  (\code{\link{migration.gini.total}}): \deqn{G^{T*}_{RC,
+  CR} = 100\frac{G^T_{RC, CR}}{G^T}} As this index is
+  standardized, it "facilitate comparisons from one period
+  to the next" of the exchange indices.
 }
 \examples{
 \dontrun{

@@ -29,8 +29,11 @@ check.migration.matrix <- function(m) {
 
 #' Total Flows Gini Index
 #'
+#' The Total Gini Index shows the overall concentration of migration with a simple number computed by comparing each cell of the migration matrix with every other cell except for the diagonal:
+#' \deqn{G^T = \frac{\sum_i \sum_{j \neq i} \sum_k \sum_{l \neq k} | M_{ij} - M_{kl} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
+#' This implementation solves the above formula by a simple loop for performance issues to compare all values to the others at one go, although smaller migration matrices could also be addressed by a much faster \code{dist} method. Please see the sources for more details.
 #' @param m migration matrix
-#' @return number
+#' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows that all migrants are found in one single flow.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
@@ -59,8 +62,11 @@ migration.gini.total <- function(m) {
 
 #' Rows Gini Index
 #'
+#' The Rows Gini index concentrates on the "relative extent to which the destination selections of out-migrations are spatially focused":
+#' \deqn{G^T_R = \frac{\sum_i \sum_{j \neq i} \sum_{h \neq i,j} | M_{ij} - M_{ih} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
+#' This implementation solves the above formula by computing the \code{dist} matrix for each row.
 #' @param m migration matrix
-#' @return number
+#' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -85,9 +91,12 @@ migration.gini.row <- function(m) {
 
 #' Standardized Rows Gini Index
 #'
+#' The standardized version of the Rows Gini Index (\code{\link{migration.gini.row}}) by dividing that with the Total Flows Gini Index (\code{\link{migration.gini.total}}):
+#' \deqn{G^{T*}_R = 100\frac{G^T_R}{G^T}}
+#' As this index is standardized, it "facilitate comparisons from one period to the next of the rows" indices.
 #' @param m migration matrix
-#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
-#' @return percentage
+#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
+#' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -106,8 +115,11 @@ migration.gini.row.standardized <- function(m, migration.gini.total = migration.
 
 #' Columns Gini Index
 #'
+#' The Columns Gini index concentrates on the "relative extent to which the destination selections of in-migrations are spatially focused":
+#' \deqn{G^T_R = \frac{\sum_j \sum_{i \neq j} \sum_{g \neq i,j} | M_{ij} - M_{gj} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
+#' This implementation solves the above formula by computing the \code{dist} matrix for each columns.
 #' @param m migration matrix
-#' @return number
+#' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -132,9 +144,12 @@ migration.gini.col <- function(m) {
 
 #' Standardized Columns Gini Index
 #'
+#' The standardized version of the Columns Gini Index (\code{\link{migration.gini.col}}) by dividing that with the Total Flows Gini Index (\code{\link{migration.gini.total}}):
+#' \deqn{G^{T*}_C = 100\frac{G^T_C}{G^T}}
+#' As this index is standardized, it "facilitate comparisons from one period to the next" of the columns indices.
 #' @param m migration matrix
-#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
-#' @return percentage
+#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
+#' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -153,8 +168,11 @@ migration.gini.col.standardized <- function(m, migration.gini.total = migration.
 
 #' Exchange Gini Index
 #'
+#' The Exchange Gini Index "indicates the contribution to spatial focusing represented by the \eqn{n(n-q)} net interchanges in the system":
+#' \deqn{G^T_{RC, CR} = \frac{\sum_i \sum_{j \neq i} | M_{ij} - M_{ji} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
+#' This implementation solves the above formula by simply substracting the transposed matrix's values from the original one at one go.
 #' @param m migration matrix
-#' @return number
+#' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -180,9 +198,12 @@ migration.gini.exchange <- function(m) {
 
 #' Standardized Exchange Gini Index
 #'
+#' The standardized version of the Exchange Gini Index (\code{\link{migration.gini.exchange}}) by dividing that with the Total Flows Gini Index (\code{\link{migration.gini.total}}):
+#' \deqn{G^{T*}_{RC, CR} = 100\frac{G^T_{RC, CR}}{G^T}}
+#' As this index is standardized, it "facilitate comparisons from one period to the next" of the exchange indices.
 #' @param m migration matrix
 #' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
-#' @return number
+#' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #' }
@@ -202,8 +223,11 @@ migration.gini.exchange.standardized <- function(m, migration.gini.total = migra
 
 #' Out-migration Field Gini Index
 #'
+#' The Out-migration Field Gini Index is a decomposed version of the Rows Gini Index (\code{\link{migration.gini.row}}) representing "the contribution of each region's row to the total index" () (\code{\link{migration.gini.total}}):
+#' \deqn{G^O_i = \frac{\sum_{j \neq i} \sum_{l \neq i,j} | M_{ij} - M_{il} | }{ 2(n-2) \sum_{j \neq k} M_{ij}}}
+#' These Gini indices facilitates the direct comparison of different territories without further standardization.
 #' @param m migration matrix
-#' @return number
+#' @return A numeric vector with the range of 0 to 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
@@ -229,16 +253,17 @@ migration.gini.out <- function(m) {
 
 #' Migration-weighted Out-migration Gini Index
 #'
+#' The Migration-weighted Out-migration Gini Index is a weighted version of the Out-migration Field Gini Index (\code{\link{migration.gini.out}}) "according to the zone of destination's share of total migration and the mean of the weighted values is computed as":
+#' \deqn{MWG^O = \frac{ \sum_i G^O_i \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 #' @param m migration matrix
 #' @param mgo optionally passed (precomputed) Migration In-migration Gini Index
-#' @return number
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
-#' migration.weighted.gini.out(migration.hyp)   #
-#' migration.weighted.gini.out(migration.hyp2)  #
+#' migration.weighted.gini.out(migration.hyp)   # 0
+#' migration.weighted.gini.out(migration.hyp2)  # 0.02083333
 #' }
 #' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.mean}}
 #' @export
@@ -259,8 +284,11 @@ migration.weighted.gini.out <- function(m, mgo) {
 
 #' In-migration Field Gini Index
 #'
+#' The In-migration Field Gini Index is a decomposed version of the Columns Gini Index (\code{\link{migration.gini.col}}) representing "the contribution of each region's columns to the total index" () (\code{\link{migration.gini.total}}):
+#' \deqn{G^I_j = \frac{\sum_{i \neq j} \sum_{k \neq j,i} | M_{ij} - M_{kj} | }{ 2(n-2) \sum_{i \neq j} M_{ij}}}
+#' These Gini indices facilitates the direct comparison of different territories without further standardization.
 #' @param m migration matrix
-#' @return number
+#' @return A numeric vector with the range of 0 to 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
@@ -286,9 +314,10 @@ migration.gini.in <- function(m) {
 
 #' Migration-weighted In-migration Gini Index
 #'
+#' The Migration-weighted In-migration Gini Index is a weighted version of the In-migration Field Gini Index (\code{\link{migration.gini.in}}) "according to the zone of destination's share of total migration and the mean of the weighted values is computed as":
+#' \deqn{MWG^I = \frac{ \sum_j G^I_j \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 #' @param m migration matrix
 #' @param mgi optionally passed (precomputed) Migration In-migration Gini Index
-#' @return number
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
@@ -314,10 +343,12 @@ migration.weighted.gini.in <- function(m, mgi) {
 
 #' Migration-weighted Mean Gini Index
 #'
+#' The Migration-weighted Mean Gini Index is simply the average of the  Migration-weighted In-migration (\code{\link{migration.weighted.gini.in}}) and the Migration-weighted Out-migration (\code{\link{migration.weighted.gini.out}}) Gini Indices:
+#' \deqn{MWG^A = \frac{MWG^O + MWG^I}{2}}
 #' @param m migration matrix
 #' @param mwgi optionally passed (precomputed) Migration-weighted In-migration Gini Index
 #' @param mwgo optionally passed (precomputed) Migration-weighted Out-migration Gini Index
-#' @return number
+#' @return This combined index results in a number between 0 and 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
@@ -342,6 +373,22 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 
 #' Spatial Gini Indexes
 #'
+#' This is a wrapper function computing all the following Gini indices:
+#' \itemize{
+#'   \item Total Flows Gini Index (\code{\link{migration.gini.total}})
+#'   \item Rows Gini Index (\code{\link{migration.gini.row}})
+#'   \item Standardized Rows Gini Index (\code{\link{migration.gini.row.standardized}})
+#'   \item Columns Gini Index (\code{\link{migration.gini.col}})
+#'   \item Standardized Columns Gini Index (\code{\link{migration.gini.col.standardized}})
+#'   \item Exchange Gini Index (\code{\link{migration.gini.exchange}})
+#'   \item Standardized Exchange Gini Index (\code{\link{migration.gini.exchange.standardized}})
+#'   \item Out-migration Field Gini Index (\code{\link{migration.gini.out}})
+#'   \item Migration-weighted Out-migration Gini Index (\code{\link{migration.weighted.gini.out}})
+#'   \item In-migration Field Gini Index (\code{\link{migration.gini.in}})
+#'   \item Migration-weighted In-migration Gini Index (\code{\link{migration.weighted.gini.in}})
+#'   \item Migration-weighted Mean Gini Index (\code{\link{migration.weighted.gini.mean}})
+#' }
+#' @return List of all Gini indices.
 #' @param m migration matrix
 #' @examples \dontrun{
 #' data(migration.hyp)
@@ -349,6 +396,10 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 #' migration.gini(migration.hyp2)
 #' }
 #' @export
+#' @references \itemize{
+#'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
+#'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
+#' }
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row}} \code{\link{migration.gini.exchange}} \code{\link{migration.gini.in}} \code{\link{migration.gini.out}}
 migration.gini <- function(m) {
 

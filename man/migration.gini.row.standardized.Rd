@@ -9,13 +9,22 @@
   \item{m}{migration matrix}
 
   \item{migration.gini.total}{optionally pass the
-  pre-computed Total Flows Gini Index to save resources}
+  pre-computed Total Flows Gini Index to save computational
+  resources}
 }
 \value{
-  percentage
+  A percentage range from 0\% to 100\% where 0\% means that
+  the migration flows are uniform, while a higher value
+  indicates spatial focusing.
 }
 \description{
-  Standardized Rows Gini Index
+  The standardized version of the Rows Gini Index
+  (\code{\link{migration.gini.row}}) by dividing that with
+  the Total Flows Gini Index
+  (\code{\link{migration.gini.total}}): \deqn{G^{T*}_R =
+  100\frac{G^T_R}{G^T}} As this index is standardized, it
+  "facilitate comparisons from one period to the next of
+  the rows" indices.
 }
 \examples{
 \dontrun{

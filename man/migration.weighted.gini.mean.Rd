@@ -14,10 +14,17 @@
   Migration-weighted Out-migration Gini Index}
 }
 \value{
-  number
+  This combined index results in a number between 0 and 1
+  where 0 means no spatial focusing and 1 shows maximum
+  focusing.
 }
 \description{
-  Migration-weighted Mean Gini Index
+  The Migration-weighted Mean Gini Index is simply the
+  average of the Migration-weighted In-migration
+  (\code{\link{migration.weighted.gini.in}}) and the
+  Migration-weighted Out-migration
+  (\code{\link{migration.weighted.gini.out}}) Gini Indices:
+  \deqn{MWG^A = \frac{MWG^O + MWG^I}{2}}
 }
 \examples{
 \dontrun{
