@@ -8,10 +8,13 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A number where a higher (\eqn{\neq 0}) shows more spatial
+  focus.
 }
 \description{
-  Aggregated Out-migration Coefficient of Variation
+  The Aggregated Out-migration Coefficient of Variation is
+  the weighted average of the Out-migration Coefficient of
+  Variation (\code{\link{migration.cv.out}}).
 }
 \examples{
 \dontrun{

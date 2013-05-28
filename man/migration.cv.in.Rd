@@ -8,10 +8,16 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A numeric vector of standardized values where a higher
+  (\eqn{\neq 0}) shows more spatial focus.
 }
 \description{
-  In-migration Coefficient of Variation
+  As "the coefficient of variation is defined as the
+  standard deviation to mean ratio of a distribution", the
+  In-migration Coefficient of Variation is computed by
+  dividing the standard deviation (with the nominator being
+  \eqn{n} instead of \eqn{n-1}) of the in-migration flows
+  by the mean.
 }
 \examples{
 \dontrun{

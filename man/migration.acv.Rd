@@ -8,10 +8,15 @@
   \item{m}{migration matrix}
 }
 \value{
-  number
+  A number where a higher (\eqn{\neq 0}) shows more spatial
+  focus.
 }
 \description{
-  Aggregated System-wide Coefficient of Variation
+  The Aggregated System-wide Coefficient of Variation is
+  simply the sum of the Aggregated In-migration
+  (\code{\link{migration.in}}) and the Aggregated
+  Out-migration Coefficient of Variation
+  (\code{\link{migration.acv}}).
 }
 \examples{
 \dontrun{

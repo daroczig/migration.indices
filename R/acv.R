@@ -1,7 +1,8 @@
 #' In-migration Coefficient of Variation
 #'
+#' As "the coefficient of variation is defined as the standard deviation to mean ratio of a distribution", the In-migration Coefficient of Variation is computed by dividing the standard deviation (with the nominator being \eqn{n} instead of \eqn{n-1}) of the in-migration flows by the mean.
 #' @param m migration matrix
-#' @return number
+#' @return A numeric vector of standardized values where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
@@ -21,8 +22,9 @@ migration.cv.in <- function(m) {
 
 #' Out-migration Coefficient of Variation
 #'
+#' As "the coefficient of variation is defined as the standard deviation to mean ratio of a distribution", the Out-migration Coefficient of Variation is computed by dividing the standard deviation (with the nominator being \eqn{n} instead of \eqn{n-1}) of the out-migration flows by the mean.
 #' @param m migration matrix
-#' @return number
+#' @return A numeric vector of standardized values where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
@@ -42,8 +44,9 @@ migration.cv.out <- function(m) {
 
 #' Aggregated In-migration Coefficient of Variation
 #'
+#' The Aggregated In-migration Coefficient of Variation is the weighted average of the In-migration Coefficient of Variation (\code{\link{migration.cv.in}}).
 #' @param m migration matrix
-#' @return number
+#' @return A number where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
@@ -63,8 +66,9 @@ migration.acv.in <- function(m) {
 
 #' Aggregated Out-migration Coefficient of Variation
 #'
+#' The Aggregated Out-migration Coefficient of Variation is the weighted average of the Out-migration Coefficient of Variation (\code{\link{migration.cv.out}}).
 #' @param m migration matrix
-#' @return number
+#' @return A number where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
@@ -84,8 +88,9 @@ migration.acv.out <- function(m) {
 
 #' Aggregated System-wide Coefficient of Variation
 #'
+#' The Aggregated System-wide Coefficient of Variation is simply the sum of the Aggregated In-migration (\code{\link{migration.in}}) and the Aggregated Out-migration Coefficient of Variation (\code{\link{migration.acv}}).
 #' @param m migration matrix
-#' @return number
+#' @return A number where a higher (\eqn{\neq 0}) shows more spatial focus.
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
