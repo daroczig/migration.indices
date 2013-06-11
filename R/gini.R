@@ -235,7 +235,7 @@ migration.gini.exchange.standardized <- function(m, gini.total = migration.gini.
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.gini.out(migration.hyp)  # 0 0 0
-#' migration.gini.out(migration.hyp2) # 0.000 0.125 0.000
+#' migration.gini.out(migration.hyp2) # 0.000 0.25 0.000
 #' }
 #' @export
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.in}} \code{\link{migration.weighted.gini.out}}
@@ -263,7 +263,7 @@ migration.gini.out <- function(m) {
 #' @examples \dontrun{
 #' data(migration.hyp)
 #' migration.weighted.gini.out(migration.hyp)   # 0
-#' migration.weighted.gini.out(migration.hyp2)  # 0.02083333
+#' migration.weighted.gini.out(migration.hyp2)  # 0.01041667
 #' }
 #' @seealso \code{\link{migration.weighted.gini.in}} \code{\link{migration.weighted.gini.mean}}
 #' @export
@@ -295,8 +295,8 @@ migration.weighted.gini.out <- function(m, mgo) {
 #' }
 #' @examples \dontrun{
 #' data(migration.hyp)
-#' migration.gini.in(migration.hyp)   # 0.1000000 0.2500000 0.1666667
-#' migration.gini.in(migration.hyp2)  # 0.1000000 0.0000000 0.2142857
+#' migration.gini.in(migration.hyp)   # 0.2000000 0.5000000 0.3333333
+#' migration.gini.in(migration.hyp2)  # 0.2000000 0.0000000 0.4285714
 #' }
 #' @export
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.out}} \code{\link{migration.weighted.gini.in}}

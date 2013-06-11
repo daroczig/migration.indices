@@ -26,7 +26,7 @@
 \dontrun{
 data(migration.hyp)
 migration.gini.out(migration.hyp)  # 0 0 0
-migration.gini.out(migration.hyp2) # 0.000 0.125 0.000
+migration.gini.out(migration.hyp2) # 0.000 0.25 0.000
 }
 }
 \references{

@@ -22,7 +22,7 @@
 \dontrun{
 data(migration.hyp)
 migration.weighted.gini.out(migration.hyp)   # 0
-migration.weighted.gini.out(migration.hyp2)  # 0.02083333
+migration.weighted.gini.out(migration.hyp2)  # 0.01041667
 }
 }
 \references{
