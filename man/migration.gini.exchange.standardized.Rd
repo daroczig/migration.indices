@@ -3,13 +3,13 @@
 \title{Standardized Exchange Gini Index}
 \usage{
   migration.gini.exchange.standardized(m,
-    migration.gini.total = migration.gini.total(m))
+    gini.total = migration.gini.total(m))
 }
 \arguments{
   \item{m}{migration matrix}
 
-  \item{migration.gini.total}{optionally pass the
-  pre-computed Total Flows Gini Index to save resources}
+  \item{gini.total}{optionally pass the pre-computed Total
+  Flows Gini Index to save resources}
 }
 \value{
   A percentage range from 0\% to 100\% where 0\% means that

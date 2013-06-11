@@ -95,7 +95,7 @@ migration.gini.row <- function(m) {
 #' \deqn{G^{T*}_R = 100\frac{G^T_R}{G^T}}
 #' As this index is standardized, it "facilitate comparisons from one period to the next of the rows" indices.
 #' @param m migration matrix
-#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
+#' @param gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
 #' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
@@ -107,9 +107,9 @@ migration.gini.row <- function(m) {
 #' }
 #' @export
 #' @seealso \code{\link{migration.gini.row}} \code{\link{migration.gini.col.standardized}}
-migration.gini.row.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
+migration.gini.row.standardized <- function(m, gini.total = migration.gini.total(m)) {
 
-    100 * migration.gini.row(m) / migration.gini.total
+    100 * migration.gini.row(m) / gini.total
 }
 
 
@@ -148,7 +148,7 @@ migration.gini.col <- function(m) {
 #' \deqn{G^{T*}_C = 100\frac{G^T_C}{G^T}}
 #' As this index is standardized, it "facilitate comparisons from one period to the next" of the columns indices.
 #' @param m migration matrix
-#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
+#' @param gini.total optionally pass the pre-computed Total Flows Gini Index to save computational resources
 #' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
@@ -160,9 +160,9 @@ migration.gini.col <- function(m) {
 #' }
 #' @export
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row.standardized}}
-migration.gini.col.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
+migration.gini.col.standardized <- function(m, gini.total = migration.gini.total(m)) {
 
-    100 * migration.gini.col(m) / migration.gini.total
+    100 * migration.gini.col(m) / gini.total
 }
 
 
@@ -202,7 +202,7 @@ migration.gini.exchange <- function(m) {
 #' \deqn{G^{T*}_{RC, CR} = 100\frac{G^T_{RC, CR}}{G^T}}
 #' As this index is standardized, it "facilitate comparisons from one period to the next" of the exchange indices.
 #' @param m migration matrix
-#' @param migration.gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
+#' @param gini.total optionally pass the pre-computed Total Flows Gini Index to save resources
 #' @return A percentage range from 0\% to 100\% where 0\% means that the migration flows are uniform, while a higher value indicates spatial focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
@@ -214,9 +214,9 @@ migration.gini.exchange <- function(m) {
 #' }
 #' @export
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.exchange}}
-migration.gini.exchange.standardized <- function(m, migration.gini.total = migration.gini.total(m)) {
+migration.gini.exchange.standardized <- function(m, gini.total = migration.gini.total(m)) {
 
-    100 * migration.gini.exchange(m) / migration.gini.total
+    100 * migration.gini.exchange(m) / gini.total
 
 }
 
