@@ -19,11 +19,9 @@
   \sum_j G^I_j \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.weighted.gini.in(migration.hyp)   # 0.1222222
 migration.weighted.gini.in(migration.hyp2)  # 0.05238095
-}
 }
 \references{
   \itemize{ \item M. Bell, M. Blake, P. Boyle, O.

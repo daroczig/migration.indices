@@ -26,11 +26,9 @@
   the rows" indices.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini.row.standardized(migration.hyp)     # 0
 migration.gini.row.standardized(migration.hyp2)    # 11.11111
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

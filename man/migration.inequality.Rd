@@ -20,13 +20,11 @@
   M_{ij}' | }{2} }
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.inequality(migration.hyp)
 migration.inequality(migration.hyp, expected = 'weighted')
 data(migration.world)
 migration.inequality(migration.world)
-)}
 }
 \references{
   \itemize{ \item M. Bell, M. Blake, P. Boyle, O.

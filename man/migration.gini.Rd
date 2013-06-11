@@ -36,11 +36,9 @@
   (\code{\link{migration.weighted.gini.mean}}) }
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini(migration.hyp)
 migration.gini(migration.hyp2)
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

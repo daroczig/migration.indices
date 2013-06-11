@@ -20,10 +20,8 @@
   Crude Migration Rate
 }
 \examples{
-\dontrun{
 data(migration.world)
 migration.cmr(migration.world, 6e+9)
-}
 }
 \references{
   \itemize{ \item Philip Rees, Martin Bell, Oliver

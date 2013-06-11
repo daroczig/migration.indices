@@ -50,11 +50,10 @@ migration.cv.out <- function(m) {
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.acv.in(migration.hyp)    # 0.3333333
 #' migration.acv.in(migration.hyp2)   # 0.25
-#' }
 #' @export
 #' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.out}} \code{\link{migration.acv}}
 migration.acv.in <- function(m) {
@@ -72,11 +71,10 @@ migration.acv.in <- function(m) {
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.acv.out(migration.hyp)    # 0
 #' migration.acv.out(migration.hyp2)   # 0.125
-#' }
 #' @export
 #' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.in}} \code{\link{migration.acv}}
 migration.acv.out <- function(m) {
@@ -94,11 +92,10 @@ migration.acv.out <- function(m) {
 #' @references \itemize{
 #'   \item Andrei Rogers and Stuart Sweeney (1998) Measuring the Spatial Focus of Migration Patterns. \emph{The Professional Geographer} \bold{50}, 232--242
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.acv(migration.hyp)    # 0.3333333
 #' migration.acv(migration.hyp2)   # 0.375
-#' }
 #' @export
 #' @seealso \code{\link{migration.cv.in}} \code{\link{migration.cv.out}} \code{\link{migration.acv.in}} \code{\link{migration.acv.out}}
 migration.acv <- function(m)

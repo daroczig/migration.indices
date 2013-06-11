@@ -26,11 +26,9 @@
   to the next" of the exchange indices.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini.exchange.standardized(migration.hyp)  # 25
 migration.gini.exchange.standardized(migration.hyp2) # 22.22222
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

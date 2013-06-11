@@ -20,12 +20,10 @@
   \eqn{O_i} is the total outflows from zone \eqn{i}.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.effectiveness(migration.hyp)
 data(migration.world)
 migration.effectiveness(migration.world)
-}
 }
 \references{
   \itemize{ \item Martin Bell and Salut Muhidin (2009)

@@ -20,12 +20,10 @@
   otherwise.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.connectivity(migration.hyp)
 data(migration.world)
 migration.connectivity(migration.world)
-}
 }
 \references{
   \itemize{ \item M. Bell, M. Blake, P. Boyle, O.

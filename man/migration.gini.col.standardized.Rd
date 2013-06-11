@@ -26,11 +26,9 @@
   the columns indices.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini.col.standardized(migration.hyp)     # 25
 migration.gini.col.standardized(migration.hyp2)    # 22.22222
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

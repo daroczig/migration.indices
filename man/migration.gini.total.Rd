@@ -26,11 +26,9 @@
   method. Please see the sources for more details.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini.total(migration.hyp)        # 0.2222222
 migration.gini.total(migration.hyp2)       # 0.1875
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

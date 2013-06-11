@@ -19,11 +19,9 @@
   \sum_i G^O_i \frac{\sum_j M_{ij}}{\sum_{ij} M_{ij}}}{n}}
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.weighted.gini.out(migration.hyp)   # 0
 migration.weighted.gini.out(migration.hyp2)  # 0.01041667
-}
 }
 \references{
   \itemize{ \item M. Bell, M. Blake, P. Boyle, O.

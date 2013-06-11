@@ -21,11 +21,9 @@
   the \code{dist} matrix for each columns.
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.gini.col(migration.hyp)  # 0.05555556
 migration.gini.col(migration.hyp2) # 0.04166667
-}
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

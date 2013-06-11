@@ -8,10 +8,9 @@
 #' @references \itemize{
 #'   \item Philip Rees, Martin Bell, Oliver Duke-Williams and Marcus Blake (2000) Problems and Solutions in the Measurement of Migration Intensities: Australia and Britain Compared. \emph{Population Studies} \bold{54}, 207--222
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.world)
 #' migration.cmr(migration.world, 6e+9)
-#' }
 #' @export
 migration.cmr <- function(m, PAR, k = 100) {
 

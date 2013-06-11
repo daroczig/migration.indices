@@ -17,11 +17,9 @@
   Variation (\code{\link{migration.cv.out}}).
 }
 \examples{
-\dontrun{
 data(migration.hyp)
 migration.acv.out(migration.hyp)    # 0
 migration.acv.out(migration.hyp2)   # 0.125
-}
 }
 \references{
   \itemize{ \item Andrei Rogers and Stuart Sweeney (1998)

@@ -8,12 +8,11 @@
 #' @references \itemize{
 #'   \item Martin Bell and Salut Muhidin (2009) {Cross-National Comparisons of Internal Migration}. Research Paper. UNDP. \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.effectiveness(migration.hyp)
 #' data(migration.world)
 #' migration.effectiveness(migration.world)
-#' }
 #' @export
 migration.effectiveness <- function(m) {
 
@@ -37,12 +36,11 @@ migration.effectiveness <- function(m) {
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.connectivity(migration.hyp)
 #' data(migration.world)
 #' migration.connectivity(migration.world)
-#' }
 #' @export
 migration.connectivity <- function(m) {
 
@@ -65,13 +63,12 @@ migration.connectivity <- function(m) {
 #' @references \itemize{
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
-#' @examples \dontrun{
+#' @examples
 #' data(migration.hyp)
 #' migration.inequality(migration.hyp)
 #' migration.inequality(migration.hyp, expected = 'weighted')
 #' data(migration.world)
 #' migration.inequality(migration.world)
-#' )}
 #' @export
 migration.inequality <- function(m, expected = c('equal', 'weighted')) {
 
