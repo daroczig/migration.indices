@@ -3,6 +3,8 @@ migration.indices 0.2   (2013-05-27)
 ----------------------------------------------------------------
 
  * add: (Aggregated) Coefficient of Variation
+ * add: documentation and applied formulas
+ * add: tests (values should match result found in articles)
  * code clean-up
 
 migration.indices 0.1   (2012-08-26)
