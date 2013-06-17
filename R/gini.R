@@ -33,6 +33,7 @@ check.migration.matrix <- function(m) {
 #' \deqn{G^T = \frac{\sum_i \sum_{j \neq i} \sum_k \sum_{l \neq k} | M_{ij} - M_{kl} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
 #' This implementation solves the above formula by a simple loop for performance issues to compare all values to the others at one go, although smaller migration matrices could also be addressed by a much faster \code{dist} method. Please see the sources for more details.
 #' @param m migration matrix
+#' @param corrected Bell et al. (2002) updated the formula of Plane and Mulligan (1997) to be \eqn{2{n(n-1)-1}} instead of \eqn{2n(n-1)} to "ensure that the index can assume the upper limit of 1".
 #' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows that all migrants are found in one single flow.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
@@ -40,21 +41,29 @@ check.migration.matrix <- function(m) {
 #' }
 #' @examples
 #' data(migration.hyp)
-#' migration.gini.total(migration.hyp)        # 0.2222222
-#' migration.gini.total(migration.hyp2)       # 0.1875
+#' migration.gini.total(migration.hyp)           # 0.2666667
+#' migration.gini.total(migration.hyp2)          # 0.225
+#' migration.gini.total(migration.hyp, F)        # 0.2222222
+#' migration.gini.total(migration.hyp2, F)       # 0.1875
 #' @export
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row}} \code{\link{migration.gini.exchange}} \code{\link{migration.gini.in}} \code{\link{migration.gini.out}}
-migration.gini.total <- function(m) {
+migration.gini.total <- function(m, corrected = TRUE) {
 
     check.migration.matrix(m)
 
     n           <- nrow(m)
     m.val       <- m[xor(upper.tri(m), lower.tri(m))]
-    return(sum(apply(as.data.frame(m.val), 1, function(x) sum(abs(m.val-x))), na.rm = TRUE)/(2*n*(n-1)*sum(m, na.rm = TRUE)))
+
+    if (corrected)
+        denominator <- 2*(n*(n-1)-1)
+    else
+        denominator <- 2*n*(n-1)
+
+    return(sum(apply(as.data.frame(m.val), 1, function(x) sum(abs(m.val-x))), na.rm = TRUE)/(denominator * sum(m, na.rm = TRUE)))
 
     ## faster method (fails with "low memory")
     diag(m)     <- NA
-    sum(dist(as.vector(m)), na.rm = TRUE)*2/((2*n*(n-1)-1)*sum(m, na.rm = TRUE))
+    sum(dist(as.vector(m)), na.rm = TRUE)*2/(denominator * sum(m, na.rm = TRUE))
 
 }
 
@@ -104,7 +113,7 @@ migration.gini.row <- function(m) {
 #' migration.gini.row.standardized(migration.hyp2)    # 11.11111
 #' @export
 #' @seealso \code{\link{migration.gini.row}} \code{\link{migration.gini.col.standardized}}
-migration.gini.row.standardized <- function(m, gini.total = migration.gini.total(m)) {
+migration.gini.row.standardized <- function(m, gini.total = migration.gini.total(m, FALSE)) {
 
     100 * migration.gini.row(m) / gini.total
 }
@@ -155,7 +164,7 @@ migration.gini.col <- function(m) {
 #' migration.gini.col.standardized(migration.hyp2)    # 22.22222
 #' @export
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row.standardized}}
-migration.gini.col.standardized <- function(m, gini.total = migration.gini.total(m)) {
+migration.gini.col.standardized <- function(m, gini.total = migration.gini.total(m, FALSE)) {
 
     100 * migration.gini.col(m) / gini.total
 }
@@ -208,7 +217,7 @@ migration.gini.exchange <- function(m) {
 #' migration.gini.exchange.standardized(migration.hyp2) # 22.22222
 #' @export
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.exchange}}
-migration.gini.exchange.standardized <- function(m, gini.total = migration.gini.total(m)) {
+migration.gini.exchange.standardized <- function(m, gini.total = migration.gini.total(m, FALSE)) {
 
     100 * migration.gini.exchange(m) / gini.total
 
@@ -392,7 +401,7 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 migration.gini <- function(m) {
 
     res <- list(
-             migration.gini.total         = migration.gini.total(m),
+             migration.gini.total         = migration.gini.total(m, FALSE),
              migration.gini.exchange      = migration.gini.exchange(m),
              migration.gini.row           = migration.gini.row(m),
              migration.gini.col           = migration.gini.col(m),

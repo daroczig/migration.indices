@@ -2,10 +2,15 @@
 \alias{migration.gini.total}
 \title{Total Flows Gini Index}
 \usage{
-  migration.gini.total(m)
+  migration.gini.total(m, corrected = TRUE)
 }
 \arguments{
   \item{m}{migration matrix}
+
+  \item{corrected}{Bell et al. (2002) updated the formula
+  of Plane and Mulligan (1997) to be \eqn{2{n(n-1)-1}}
+  instead of \eqn{2n(n-1)} to "ensure that the index can
+  assume the upper limit of 1".}
 }
 \value{
   A number between 0 and 1 where 0 means no spatial
@@ -27,8 +32,10 @@
 }
 \examples{
 data(migration.hyp)
-migration.gini.total(migration.hyp)        # 0.2222222
-migration.gini.total(migration.hyp2)       # 0.1875
+migration.gini.total(migration.hyp)           # 0.2666667
+migration.gini.total(migration.hyp2)          # 0.225
+migration.gini.total(migration.hyp, F)        # 0.2222222
+migration.gini.total(migration.hyp2, F)       # 0.1875
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

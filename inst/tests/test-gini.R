@@ -3,8 +3,8 @@ data(migration.hyp)
 context('Gini indices')
 
 test_that('results match values from articles', {
-    expect_equal(migration.gini.total(migration.hyp), 0.22222222)
-    expect_equal(migration.gini.total(migration.hyp2), 0.1875)
+    expect_equal(migration.gini.total(migration.hyp, F), 0.22222222)
+    expect_equal(migration.gini.total(migration.hyp2, F), 0.1875)
     expect_equal(migration.gini.row(migration.hyp), 0)
     expect_equal(migration.gini.row(migration.hyp2), 0.0208333333)
     expect_equal(migration.gini.row.standardized(migration.hyp), 0)
@@ -28,8 +28,8 @@ test_that('results match values from articles', {
 })
 
 test_that('scale-independent results', {
-    expect_equal(migration.gini.total(2*migration.hyp), 0.22222222)
-    expect_equal(migration.gini.total(6*migration.hyp2), 0.1875)
+    expect_equal(migration.gini.total(2*migration.hyp, F), 0.22222222)
+    expect_equal(migration.gini.total(6*migration.hyp2, F), 0.1875)
     expect_equal(migration.gini.row(7*migration.hyp), 0)
     expect_equal(migration.gini.row(5*migration.hyp2), 0.0208333333)
     expect_equal(migration.gini.row.standardized(3*migration.hyp), 0)

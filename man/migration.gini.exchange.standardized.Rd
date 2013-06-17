@@ -3,7 +3,7 @@
 \title{Standardized Exchange Gini Index}
 \usage{
   migration.gini.exchange.standardized(m,
-    gini.total = migration.gini.total(m))
+    gini.total = migration.gini.total(m, FALSE))
 }
 \arguments{
   \item{m}{migration matrix}
