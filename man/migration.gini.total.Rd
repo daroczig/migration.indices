@@ -34,8 +34,8 @@
 data(migration.hyp)
 migration.gini.total(migration.hyp)           # 0.2666667
 migration.gini.total(migration.hyp2)          # 0.225
-migration.gini.total(migration.hyp, F)        # 0.2222222
-migration.gini.total(migration.hyp2, F)       # 0.1875
+migration.gini.total(migration.hyp, FALSE)    # 0.2222222
+migration.gini.total(migration.hyp2, FALSE)   # 0.1875
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

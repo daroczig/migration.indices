@@ -43,8 +43,8 @@ check.migration.matrix <- function(m) {
 #' data(migration.hyp)
 #' migration.gini.total(migration.hyp)           # 0.2666667
 #' migration.gini.total(migration.hyp2)          # 0.225
-#' migration.gini.total(migration.hyp, F)        # 0.2222222
-#' migration.gini.total(migration.hyp2, F)       # 0.1875
+#' migration.gini.total(migration.hyp, FALSE)    # 0.2222222
+#' migration.gini.total(migration.hyp2, FALSE)   # 0.1875
 #' @export
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row}} \code{\link{migration.gini.exchange}} \code{\link{migration.gini.in}} \code{\link{migration.gini.out}}
 migration.gini.total <- function(m, corrected = TRUE) {
