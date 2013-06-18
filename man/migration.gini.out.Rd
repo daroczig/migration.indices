@@ -2,10 +2,16 @@
 \alias{migration.gini.out}
 \title{Out-migration Field Gini Index}
 \usage{
-  migration.gini.out(m)
+  migration.gini.out(m, corrected = TRUE)
 }
 \arguments{
   \item{m}{migration matrix}
+
+  \item{corrected}{Bell et al. (2002) updated the formula
+  of Plane and Mulligan (1997) to be \eqn{2(n-2)} instead
+  of \eqn{2(n-1)} because "the number of comparisons should
+  exclude the diagonal cell in each row and column, and the
+  comparison of each cell with itself".}
 }
 \value{
   A numeric vector with the range of 0 to 1 where 0 means
@@ -24,8 +30,10 @@
 }
 \examples{
 data(migration.hyp)
-migration.gini.out(migration.hyp)  # 0 0 0
-migration.gini.out(migration.hyp2) # 0.000 0.25 0.000
+migration.gini.out(migration.hyp)         # 0 0 0
+migration.gini.out(migration.hyp2)        # 0.000 0.25 0.000
+migration.gini.out(migration.hyp, FALSE)  # 0 0 0
+migration.gini.out(migration.hyp2, FALSE) # 0.000 0.125 0.000
 }
 \references{
   \itemize{ \item David A. Plane and Gordon F. Mulligan

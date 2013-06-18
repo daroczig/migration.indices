@@ -2,7 +2,8 @@
 \alias{migration.weighted.gini.out}
 \title{Migration-weighted Out-migration Gini Index}
 \usage{
-  migration.weighted.gini.out(m, mgo)
+  migration.weighted.gini.out(m,
+    mgo = migration.gini.out(m))
 }
 \arguments{
   \item{m}{migration matrix}
@@ -21,7 +22,7 @@
 \examples{
 data(migration.hyp)
 migration.weighted.gini.out(migration.hyp)   # 0
-migration.weighted.gini.out(migration.hyp2)  # 0.01041667
+migration.weighted.gini.out(migration.hyp2)  # 0.02083333
 }
 \references{
   \itemize{ \item M. Bell, M. Blake, P. Boyle, O.

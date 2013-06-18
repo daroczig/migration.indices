@@ -17,6 +17,8 @@ test_that('results match values from articles', {
     expect_equal(migration.gini.exchange.standardized(migration.hyp2), 22.222222)
     expect_equal(migration.gini.out(migration.hyp), rep(0, 3))
     expect_equal(migration.gini.out(migration.hyp2), c(0, 0.25, 0))
+    expect_equal(migration.gini.out(migration.hyp, FALSE), rep(0, 3))
+    expect_equal(migration.gini.out(migration.hyp2, FALSE), c(0, 0.125, 0))
     expect_equal(migration.weighted.gini.out(migration.hyp), 0)
     expect_equal(migration.weighted.gini.out(migration.hyp2), 0.0208333333333333)
     expect_equal(migration.gini.in(migration.hyp), c(0.2, 0.5, 0.333333333333333))
