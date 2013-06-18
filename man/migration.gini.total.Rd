@@ -8,9 +8,9 @@
   \item{m}{migration matrix}
 
   \item{corrected}{Bell et al. (2002) updated the formula
-  of Plane and Mulligan (1997) to be \eqn{2{n(n-1)-1}}
-  instead of \eqn{2n(n-1)} to "ensure that the index can
-  assume the upper limit of 1".}
+  of Plane and Mulligan (1997) to have \eqn{2{n(n-1)-1}}
+  instead of \eqn{2n(n-1)} in the denominator to "ensure
+  that the index can assume the upper limit of 1".}
 }
 \value{
   A number between 0 and 1 where 0 means no spatial

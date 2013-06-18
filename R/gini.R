@@ -33,7 +33,7 @@ check.migration.matrix <- function(m) {
 #' \deqn{G^T = \frac{\sum_i \sum_{j \neq i} \sum_k \sum_{l \neq k} | M_{ij} - M_{kl} | }{ (2n(n-1)-1) \sum_i \sum_{j \neq i} M_{ij}}}
 #' This implementation solves the above formula by a simple loop for performance issues to compare all values to the others at one go, although smaller migration matrices could also be addressed by a much faster \code{dist} method. Please see the sources for more details.
 #' @param m migration matrix
-#' @param corrected Bell et al. (2002) updated the formula of Plane and Mulligan (1997) to be \eqn{2{n(n-1)-1}} instead of \eqn{2n(n-1)} to "ensure that the index can assume the upper limit of 1".
+#' @param corrected Bell et al. (2002) updated the formula of Plane and Mulligan (1997) to have \eqn{2{n(n-1)-1}} instead of \eqn{2n(n-1)} in the denominator to "ensure that the index can assume the upper limit of 1".
 #' @return A number between 0 and 1 where 0 means no spatial focusing and 1 shows that all migrants are found in one single flow.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
