@@ -1,4 +1,11 @@
 
+migration.indices 0.2.1 (2013-06-18)
+----------------------------------------------------------------
+
+ * add: corrected and uncorrected version of Gini indexes by Bell et al.
+ * add: further tests (scale independence)
+ * Travis-CI integration @ https://travis-ci.org/daroczig/migration.indices
+
 migration.indices 0.2   (2013-05-27)
 ----------------------------------------------------------------
 

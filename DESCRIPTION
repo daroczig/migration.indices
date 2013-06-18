@@ -10,9 +10,9 @@ Author: Lajos Bálint <balint@demografia.hu> and Gergely Daróczi
 Description: This package provides various indices, like Crude Migration Rate,
     different Gini indices or the Coefficient of Variation among others, to
     show the (un)equality of migration.
-Version: 0.2
+Version: 0.2.1
 URL: http://github.com/daroczig/migration.indices
-Date: 2013-05-27
+Date: 2013-06-18
 Encoding: UTF-8
 Collate:
     'gini.R'
