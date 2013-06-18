@@ -289,6 +289,7 @@ migration.weighted.gini.out <- function(m, mgo) {
 #' \deqn{G^I_j = \frac{\sum_{i \neq j} \sum_{k \neq j,i} | M_{ij} - M_{kj} | }{ 2(n-2) \sum_{i \neq j} M_{ij}}}
 #' These Gini indices facilitates the direct comparison of different territories without further standardization.
 #' @param m migration matrix
+#' @param corrected Bell et al. (2002) updated the formula of Plane and Mulligan (1997) to be \eqn{2(n-2)} instead of \eqn{2(n-1)} because "the number of comparisons should exclude the diagonal cell in each row and column, and the comparison of each cell with itself".
 #' @return A numeric vector with the range of 0 to 1 where 0 means no spatial focusing and 1 shows maximum focusing.
 #' @references \itemize{
 #'   \item David A. Plane and Gordon F. Mulligan (1997) Measuring Spatial Focusing in a Migration System. \emph{Demography} \bold{34}, 251--262
@@ -296,18 +297,25 @@ migration.weighted.gini.out <- function(m, mgo) {
 #' }
 #' @examples
 #' data(migration.hyp)
-#' migration.gini.in(migration.hyp)   # 0.2000000 0.5000000 0.3333333
-#' migration.gini.in(migration.hyp2)  # 0.2000000 0.0000000 0.4285714
+#' migration.gini.in(migration.hyp)         # 0.2000000 0.5000000 0.3333333
+#' migration.gini.in(migration.hyp2)        # 0.2000000 0.0000000 0.4285714
+#' migration.gini.in(migration.hyp, FALSE)  # 0.1000000 0.2500000 0.1666667
+#' migration.gini.in(migration.hyp2, FALSE) # 0.1000000 0.0000000 0.2142857
 #' @export
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.out}} \code{\link{migration.weighted.gini.in}}
-migration.gini.in <- function(m) {
+migration.gini.in <- function(m, corrected = TRUE) {
 
     check.migration.matrix(m)
 
     diag(m)     <- NA
     n           <- nrow(m)
 
-    apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE) * 2) / (2 * (n - 2) * colSums(m, na.rm = TRUE))
+    if (corrected)
+        denominator <- 2 * (n - 2)
+    else
+        denominator <- 2 * (n - 1)
+
+    apply(m, 2, function(m.row) sum(dist(m.row), na.rm = TRUE) * 2) / (denominator * colSums(m, na.rm = TRUE))
 
 }
 
@@ -327,14 +335,11 @@ migration.gini.in <- function(m) {
 #' migration.weighted.gini.in(migration.hyp2)  # 0.05238095
 #' @seealso \code{\link{migration.gini}} \code{\link{migration.gini.in}} \code{\link{migration.weighted.gini.out}} \code{\link{migration.weighted.gini.mean}}
 #' @export
-migration.weighted.gini.in <- function(m, mgi) {
+migration.weighted.gini.in <- function(m, mgi = migration.gini.in(m)) {
 
     diag(m)     <- NA
     n           <- nrow(m)
     m.sum       <- sum(m, na.rm = TRUE)
-
-    if (missing(mgi))
-        mgi <- migration.gini.in(m)
 
     sum(mgi * rowSums(m, na.rm = TRUE) / m.sum) / n
 

@@ -2,7 +2,7 @@
 \alias{migration.weighted.gini.in}
 \title{Migration-weighted In-migration Gini Index}
 \usage{
-  migration.weighted.gini.in(m, mgi)
+  migration.weighted.gini.in(m, mgi = migration.gini.in(m))
 }
 \arguments{
   \item{m}{migration matrix}

@@ -21,6 +21,8 @@ test_that('results match values from articles', {
     expect_equal(migration.weighted.gini.out(migration.hyp2), 0.0208333333333333)
     expect_equal(migration.gini.in(migration.hyp), c(0.2, 0.5, 0.333333333333333))
     expect_equal(migration.gini.in(migration.hyp2), c(0.2, 0, 0.428571428571429))
+    expect_equal(migration.gini.in(migration.hyp, FALSE), c(0.1, 0.25, 0.16666666666))
+    expect_equal(migration.gini.in(migration.hyp2, FALSE), c(0.1, 0, 0.214285714285714))
     expect_equal(migration.weighted.gini.in(migration.hyp), 0.122222222222222)
     expect_equal(migration.weighted.gini.in(migration.hyp2), 0.0523809523809524)
     expect_equal(migration.weighted.gini.mean(migration.hyp), 0.0611111111111111)
