@@ -2,10 +2,13 @@
 \alias{migration.gini}
 \title{Spatial Gini Indexes}
 \usage{
-  migration.gini(m)
+  migration.gini(m, corrected = TRUE)
 }
 \arguments{
   \item{m}{migration matrix}
+
+  \item{corrected}{to use Bell et al. (2002) updated
+  formulas instead of Plane and Mulligan (1997)}
 }
 \value{
   List of all Gini indices.

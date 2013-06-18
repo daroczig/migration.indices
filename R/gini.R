@@ -398,6 +398,7 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 #' }
 #' @return List of all Gini indices.
 #' @param m migration matrix
+#' @param corrected to use Bell et al. (2002) updated formulas instead of Plane and Mulligan (1997)
 #' @examples
 #' data(migration.hyp)
 #' migration.gini(migration.hyp)
@@ -408,15 +409,15 @@ migration.weighted.gini.mean <- function(m, mwgi, mwgo) {
 #'   \item M. Bell, M. Blake, P. Boyle, O. Duke-Williams, P. Rees, J. Stillwell and G. Hugo (2002) Cross-National Comparison of Internal Migration. Issues and Measures. \emph{Journal of the Royal Statistical Society. Series A (Statistics in Society)} \bold{165}, 435--464
 #' }
 #' @seealso \code{\link{migration.gini.col}} \code{\link{migration.gini.row}} \code{\link{migration.gini.exchange}} \code{\link{migration.gini.in}} \code{\link{migration.gini.out}}
-migration.gini <- function(m) {
+migration.gini <- function(m, corrected = TRUE) {
 
     res <- list(
-             migration.gini.total         = migration.gini.total(m, FALSE),
+             migration.gini.total         = migration.gini.total(m, corrected),
              migration.gini.exchange      = migration.gini.exchange(m),
              migration.gini.row           = migration.gini.row(m),
              migration.gini.col           = migration.gini.col(m),
-             migration.gini.in            = migration.gini.in(m),
-             migration.gini.out           = migration.gini.out(m)
+             migration.gini.in            = migration.gini.in(m, corrected),
+             migration.gini.out           = migration.gini.out(m, corrected)
       )
 
     res$migration.gini.row.standardized           <- migration.gini.row.standardized(m, res$migration.gini.total)
