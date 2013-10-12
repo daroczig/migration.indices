@@ -54,6 +54,7 @@ migration.field.diagram <- function(m, method = c('gini', 'acv'), title = 'Migra
     polygon(x = c( 0,  1,  1,  0), y = c( 0,  0,  1,  1), col = 'Light Blue 3')
     polygon(x = c( 0, -1, -1,  0), y = c( 0,  0,  1,  1), col = 'Light Blue 3')
     polygon(x = c( 0,  1,  1,  0), y = c( 0,  0, -1, -1), col = 'Light Blue 3')
+    lines(c(-2.5, 2.5), c(-2.5, 2.5), lty = 2)
 
     ## model
     fit   <- lm(.in ~ .out)
@@ -61,7 +62,7 @@ migration.field.diagram <- function(m, method = c('gini', 'acv'), title = 'Migra
     ## confidence interval
     xgrid <- seq(-3, 3, length.out = 20)
     pred  <- predict(fit, data.frame(.out = xgrid), interval = 'confidence')
-    polygon(x = c(xgrid, rev(xgrid)), y=c(pred[,3], rev(pred[,2])), col = 'Light Blue 3', border = TRUE)
+    polygon(x = c(xgrid, rev(xgrid)), y=c(pred[,3], rev(pred[,2])), col = rgb(154/255, 192/255,205/255, alpha = 0.8), border = TRUE)
 
     ## points
     points(.out, .in, pch = 20)
