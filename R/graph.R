@@ -74,7 +74,8 @@ migration.field.diagram <- function(m, method = c('gini', 'acv'), title = 'Migra
     b0    <- round(coefs[1], 2)
     b1    <- round(coefs[2], 2)
     r2    <- round(summary(fit)$r.squared, 2)
-    mtext(bquote(italic(y) == .(b0) + .(b1)*italic(x) * "," ~~ r^2 == .(r2) * "," ~~ RMSE == .(rmse)), side = 3, line = 0)
+    p     <- round(anova(fit)$'Pr(>F)'[1], 2)
+    mtext(bquote(italic(y) == .(b0) + .(b1)*italic(x) * "," ~~ p == .(p) * "," ~~ r^2 == .(r2) * "," ~~ RMSE == .(rmse)), side = 3, line = 0)
 
     ## densities
     sldensity <- density(.in)
