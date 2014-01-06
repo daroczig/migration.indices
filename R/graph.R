@@ -66,7 +66,7 @@ migration.field.diagram <- function(m, method = c('gini', 'acv'), title = 'Migra
 
     ## points
     points(.out, .in, pch = 20)
-    textxy(.out, .in, labs = rownames(m))
+    textxy(.out, .in, labs = rownames(m), cex = 1)
 
     ## regression parameters
     rmse  <- round(sqrt(mean(resid(fit) ^ 2)), 2)
@@ -74,8 +74,8 @@ migration.field.diagram <- function(m, method = c('gini', 'acv'), title = 'Migra
     b0    <- round(coefs[1], 2)
     b1    <- round(coefs[2], 2)
     r2    <- round(summary(fit)$r.squared, 2)
-    p     <- round(anova(fit)$'Pr(>F)'[1], 2)
-    mtext(bquote(italic(y) == .(b0) + .(b1)*italic(x) * "," ~~ p == .(p) * "," ~~ r^2 == .(r2) * "," ~~ RMSE == .(rmse)), side = 3, line = 0)
+    p     <- format(anova(fit)$'Pr(>F)'[1], digits = 2)
+    mtext(bquote(italic(y) == .(b0) + .(b1)*italic(x) * "," ~~ r^2 == .(r2) * "," ~~ RMSE == .(rmse) * "," ~~ p == .(p)), side = 3, line = 0)
 
     ## densities
     sldensity <- density(.in)
