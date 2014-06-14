@@ -11,7 +11,7 @@ migration.rate(m, PAR)
 \item{PAR}{population at risk}
 }
 \description{
-\deqn{MEI = 100\frac{ \sum_i |D_i - O_i| }{ \sum_i P_i }}
+\deqn{ANMR = 100\frac{ \sum_i |D_i - O_i| }{ \sum_i P_i }}
 where \eqn{D_i} is the total inflows to zone \eqn{i} and \eqn{O_i} is the total outflows from zone \eqn{i}.
 }
 \examples{
