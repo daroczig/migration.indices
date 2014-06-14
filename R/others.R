@@ -26,6 +26,33 @@ migration.effectiveness <- function(m) {
 }
 
 
+#' Aggregate net migration rate
+#'
+#' \deqn{MEI = 100\frac{ \sum_i |D_i - O_i| }{ \sum_i P_i }}
+#' where \eqn{D_i} is the total inflows to zone \eqn{i} and \eqn{O_i} is the total outflows from zone \eqn{i}.
+#' @param m migration matrix
+#' @param PAR population at risk
+#' @references \itemize{
+#'   \item Martin Bell and Salut Muhidin (2009) {Cross-National Comparisons of Internal Migration}. Research Paper. UNDP. \url{http://hdr.undp.org/en/reports/global/hdr2009/papers/HDRP_2009_30.pdf}
+#' }
+#' @examples
+#' data(migration.world)
+#' migration.rate(migration.world, 6e+9)
+#' @export
+migration.rate <- function(m, PAR) {
+
+    check.migration.matrix(m)
+    if (missing(PAR))
+        stop('Estimated population size was not provided!')
+
+    D <- colSums(m, na.rm = TRUE)
+    O <- rowSums(m, na.rm = TRUE)
+
+    100 * 0.5 * sum(abs(D - O)) / sum(PAR)
+
+}
+
+
 #' Migration Connectivity Index
 #'
 #' The Migration Connectivity Index measures "the proportion of the total number of potential interregional flows which are not zero":
