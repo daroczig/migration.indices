@@ -1,6 +1,4 @@
 #' Crude Migration Rate
-#'
-#'
 #' @param m migration matrix
 #' @param PAR population at risk (estimated average population size)
 #' @param k scaling constant (set to \code{100} by default to result in percentage)

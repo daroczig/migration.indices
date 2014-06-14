@@ -16,10 +16,3 @@ Imports:
 URL: http://github.com/daroczig/migration.indices
 Date: 2013-06-18
 Encoding: UTF-8
-Collate:
-    'gini.R'
-    'migration.indices.R'
-    'crude.R'
-    'others.R'
-    'acv.R'
-    'graph.R'
