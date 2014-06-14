@@ -16,4 +16,4 @@ check: build
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
 test:
-	Rscript -e 'library(migration.indices);library(testthat);test_package("migration.indices")'
+	Rscript -e 'library(migration.indices);library(methods);library(testthat);test_package("migration.indices")'
